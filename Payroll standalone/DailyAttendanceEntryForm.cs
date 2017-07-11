@@ -13,31 +13,48 @@ namespace Payroll_standalone
 {
     public partial class DailyAttendanceEntryForm : Form
     {
-        MySqlConnection db = new MySqlConnection("datasource=localhost;port=3306;database=softwaredb;username=root;password=");
+        MySqlConnection db;
         DateTimePicker picker;
-        //DataTable dt = new DataTable();
+        
 
         public DailyAttendanceEntryForm()
         {
             InitializeComponent();
-            //fillData();
             
         }
 
-        /*public void fillData()
+        private void DailyAttendanceEntryForm_Load(object sender, EventArgs e)
         {
-            string selectQuery = "SELECT Emp_ID,Date,In_Time,Out_Time FROM softwaredb.attendance";
-            var adapter = new MySqlDataAdapter(selectQuery, dbconnection);
-            adapter.Fill(dt);
-            dataGridView1.DataSource = dt;
+            db = DBConnection.getDBConnection();
+            dateTimePicker2.Value = DateTime.Now;
+            loadTocbxEmpID();
+            loadToDataTable();
+            picker = new DateTimePicker();
+            picker.Format = DateTimePickerFormat.Custom;
+            picker.CustomFormat = "h:mm tt";
+            picker.ShowUpDown = true;
+            picker.Visible = false;
+            dataGridView1.Controls.Add(picker);
+            picker.ValueChanged += this.picker_ValueChanged;
 
-        }*/
+        }
+
+        
         public void clearDataGrid()
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                dataGridView1.Rows.Remove(row);
+                clearRow(row, true);
             }
+            
+        }
+
+        public void clearRow(DataGridViewRow row, bool clearAll)
+        {
+            row.Cells[2].Value = row.Cells[2].DefaultNewRowValue;
+            row.Cells[3].Value = row.Cells[3].DefaultNewRowValue;
+            if (clearAll) { row.Cells[4].Value = row.Cells[4].DefaultNewRowValue; }
+            
         }
 
         private void btnAddSingle_Click(object sender, EventArgs e)
@@ -76,12 +93,14 @@ namespace Payroll_standalone
         public void loadToDataTable()
         {
             dataGridView1.Rows.Add();
+            
             using (db)
             {
-                db.Open();
+                
                 var query = "SELECT `ID`, `First Name`, `Last Name` FROM employeedatabase";
                 using (var command = new MySqlCommand(query, db))
                 {
+                    db.Open();
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -92,28 +111,14 @@ namespace Payroll_standalone
                             dataGridView1.Rows.Add(row);
                         }
                     }
+                    db.Close();
                 }
-                db.Close();
+                
                 dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
             }
 
         }
-        private void DailyAttendanceEntryForm_Load(object sender, EventArgs e)
-        {
-            dateTimePicker2.Value = DateTime.Now;
-            loadTocbxEmpID();
-            loadToDataTable();
-            picker = new DateTimePicker();
-            picker.Format = DateTimePickerFormat.Custom;
-            picker.CustomFormat = "h:mm tt";
-            picker.ShowUpDown = true;
-            picker.Visible = false;
-            dataGridView1.Controls.Add(picker);
-
-            picker.ValueChanged += this.picker_ValueChanged;
-            dataGridView1.CellBeginEdit += this.dataGridView1_CellBeginEdit;
-            dataGridView1.CellEndEdit += this.dataGridView1_CellEndEdit;
-        }
+   
 
         private void cBxEmpID_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -133,30 +138,14 @@ namespace Payroll_standalone
             }
         }
 
-        private void panelSingleEntry_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
 
         private void picker_ValueChanged(object sender, EventArgs e)
         {
@@ -167,7 +156,7 @@ namespace Payroll_standalone
         {
             try
             {
-                if (dataGridView1.Focused && (dataGridView1.CurrentCell.ColumnIndex == 2 || dataGridView1.CurrentCell.ColumnIndex == 3))
+                if (dataGridView1.Focused && (dataGridView1.CurrentCell.ColumnIndex == 2 || dataGridView1.CurrentCell.ColumnIndex == 3) && !Convert.ToBoolean(dataGridView1.Rows[e.RowIndex].Cells[4].Value))
                 {
                     picker.Location = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location;
                     picker.Width = dataGridView1.CurrentCell.Size.Width;
@@ -175,7 +164,7 @@ namespace Payroll_standalone
 
                     if (dataGridView1.CurrentCell.Value != null)
                     {
-                        picker.Value = (DateTime)dataGridView1.CurrentCell.Value;
+                        picker.Value = DateTime.ParseExact(dataGridView1.CurrentCell.Value.ToString(), "h:mm tt", System.Globalization.CultureInfo.InvariantCulture) ;
                     }
                     else
                     {
@@ -197,7 +186,120 @@ namespace Payroll_standalone
         {
             cBxEmpID.Text = "";
             tbxEmpName.Text = "";
-            dateTimePicker3.Value= ;
+            //dateTimePicker3.Value= ;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (db)
+                {
+
+                    var query = "INSERT into attendance VALUES (" + Convert.ToInt32(cBxEmpID.Text) + ",'" + dateTimePicker2.Value.Date.ToString("yyyy-MM-dd") + "','" + dateTimePicker3.Value.TimeOfDay + "','" + dateTimePicker4.Value.TimeOfDay + "')";
+                    using (var command = new MySqlCommand(query, db))
+                    {
+                        db.Open();
+                        command.ExecuteNonQuery();                 
+                        db.Close();
+                    }
+                    MessageBox.Show("Attendance updated for Employee " + cBxEmpID.Text + ":" + tbxEmpName.Text, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+       
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (db)
+                {
+                    db.Open();
+                    
+                    var query = "INSERT into attendance VALUES (@EmpID, @Date, @InTime, @OutTime)";
+                    using (var command = new MySqlCommand(query, db))
+                    {
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {                            
+                            if(Convert.ToBoolean(row.Cells[4].Value))
+                            {
+                                continue;
+                            }
+                            command.Parameters.AddWithValue("@EmpID", Convert.ToInt32(row.Cells[0].Value));
+                            command.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"));
+                            command.Parameters.AddWithValue("@InTime", row.Cells[2].Value);
+                            command.Parameters.AddWithValue("@OutTime", row.Cells[3].Value);
+                            command.ExecuteNonQuery();
+                            command.Parameters.Clear();
+                        }                      
+                    }
+                    db.Close();
+                    MessageBox.Show("Attendance updated for " + dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"),"" ,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    clearDataGrid();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.Focused && dataGridView1.CurrentCell.ColumnIndex == 4)
+                {
+                    if (Convert.ToBoolean(dataGridView1.CurrentCell.Value))
+                    {
+                        clearRow(dataGridView1.Rows[e.RowIndex], false);
+                        dataGridView1.CurrentRow.Cells[2].ReadOnly = true;
+                        dataGridView1.CurrentRow.Cells[2].ReadOnly = true;
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void btnClrRow_Click(object sender, EventArgs e)
+        {
+            clearRow(dataGridView1.CurrentRow, true);
+        }
+
+        private void btnClrAll_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Clear all entered data?", "Clear Table ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            {
+                clearDataGrid();
+                dateTimePicker1.Focus();
+            }
+
+                
         }
     }
 }

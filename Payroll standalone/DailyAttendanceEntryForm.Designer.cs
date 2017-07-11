@@ -31,14 +31,23 @@
             this.dataSet1 = new System.Data.DataSet();
             this.FormTitle = new System.Windows.Forms.Label();
             this.panelTableEntry = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnClrRow = new System.Windows.Forms.Button();
             this.btnAddSingle = new System.Windows.Forms.Button();
             this.btnClrAll = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.EmpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OutTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Absent = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panelSingleEntry = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.btnAddAll = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -51,15 +60,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cBxEmpID = new System.Windows.Forms.ComboBox();
             this.tbxEmpName = new System.Windows.Forms.TextBox();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.EmpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmpName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OutTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Absent = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.panelTableEntry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -97,6 +97,16 @@
             this.panelTableEntry.Size = new System.Drawing.Size(1651, 1014);
             this.panelTableEntry.TabIndex = 1;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(158, 97);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(142, 25);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "(yyyy-mm-dd)";
+            // 
             // btnClrRow
             // 
             this.btnClrRow.Location = new System.Drawing.Point(1371, 759);
@@ -105,10 +115,11 @@
             this.btnClrRow.TabIndex = 6;
             this.btnClrRow.Text = "Clear Row";
             this.btnClrRow.UseVisualStyleBackColor = true;
+            this.btnClrRow.Click += new System.EventHandler(this.btnClrRow_Click);
             // 
             // btnAddSingle
             // 
-            this.btnAddSingle.Location = new System.Drawing.Point(1309, 45);
+            this.btnAddSingle.Location = new System.Drawing.Point(1309, 31);
             this.btnAddSingle.Name = "btnAddSingle";
             this.btnAddSingle.Size = new System.Drawing.Size(286, 77);
             this.btnAddSingle.TabIndex = 7;
@@ -124,6 +135,7 @@
             this.btnClrAll.TabIndex = 5;
             this.btnClrAll.Text = "Clear All";
             this.btnClrAll.UseVisualStyleBackColor = true;
+            this.btnClrAll.Click += new System.EventHandler(this.btnClrAll_Click);
             // 
             // btnSubmit
             // 
@@ -133,6 +145,7 @@
             this.btnSubmit.TabIndex = 4;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // dateTimePicker1
             // 
@@ -163,7 +176,49 @@
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(1235, 826);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // EmpID
+            // 
+            this.EmpID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.EmpID.Frozen = true;
+            this.EmpID.HeaderText = "Employee ID";
+            this.EmpID.Name = "EmpID";
+            this.EmpID.ReadOnly = true;
+            this.EmpID.Width = 208;
+            // 
+            // EmpName
+            // 
+            this.EmpName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EmpName.FillWeight = 400F;
+            this.EmpName.HeaderText = "Employee Name";
+            this.EmpName.Name = "EmpName";
+            this.EmpName.ReadOnly = true;
+            // 
+            // InTime
+            // 
+            this.InTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.InTime.HeaderText = "In Time";
+            this.InTime.Name = "InTime";
+            this.InTime.Width = 146;
+            // 
+            // OutTime
+            // 
+            this.OutTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.OutTime.HeaderText = "Out Time";
+            this.OutTime.Name = "OutTime";
+            this.OutTime.Width = 167;
+            // 
+            // Absent
+            // 
+            this.Absent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Absent.FillWeight = 10F;
+            this.Absent.HeaderText = "Absent";
+            this.Absent.Name = "Absent";
+            this.Absent.Width = 111;
             // 
             // label1
             // 
@@ -196,7 +251,38 @@
             this.panelSingleEntry.Name = "panelSingleEntry";
             this.panelSingleEntry.Size = new System.Drawing.Size(1651, 1014);
             this.panelSingleEntry.TabIndex = 2;
-            this.panelSingleEntry.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSingleEntry_Paint);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(395, 111);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(142, 25);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "(yyyy-mm-dd)";
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.CustomFormat = "h:mm tt";
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker4.Location = new System.Drawing.Point(391, 495);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.ShowUpDown = true;
+            this.dateTimePicker4.Size = new System.Drawing.Size(530, 40);
+            this.dateTimePicker4.TabIndex = 11;
+            this.dateTimePicker4.Value = new System.DateTime(2017, 7, 9, 17, 0, 0, 0);
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CustomFormat = "h:mm tt";
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker3.Location = new System.Drawing.Point(391, 389);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.ShowUpDown = true;
+            this.dateTimePicker3.Size = new System.Drawing.Size(530, 40);
+            this.dateTimePicker3.TabIndex = 10;
+            this.dateTimePicker3.Value = new System.DateTime(2017, 7, 9, 8, 0, 0, 0);
             // 
             // btnAddAll
             // 
@@ -236,6 +322,7 @@
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "Next Entry";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // label6
             // 
@@ -272,7 +359,6 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(530, 40);
             this.dateTimePicker2.TabIndex = 0;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label3
             // 
@@ -305,89 +391,9 @@
             // 
             this.tbxEmpName.Location = new System.Drawing.Point(391, 281);
             this.tbxEmpName.Name = "tbxEmpName";
+            this.tbxEmpName.ReadOnly = true;
             this.tbxEmpName.Size = new System.Drawing.Size(530, 40);
             this.tbxEmpName.TabIndex = 2;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.CustomFormat = "h:mm tt";
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(391, 389);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.ShowUpDown = true;
-            this.dateTimePicker3.Size = new System.Drawing.Size(530, 40);
-            this.dateTimePicker3.TabIndex = 10;
-            this.dateTimePicker3.Value = new System.DateTime(2017, 7, 9, 8, 0, 0, 0);
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.CustomFormat = "h:mm tt";
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker4.Location = new System.Drawing.Point(391, 495);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.ShowUpDown = true;
-            this.dateTimePicker4.Size = new System.Drawing.Size(530, 40);
-            this.dateTimePicker4.TabIndex = 11;
-            this.dateTimePicker4.Value = new System.DateTime(2017, 7, 9, 17, 0, 0, 0);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(395, 111);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(142, 25);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "(yyyy-mm-dd)";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(158, 97);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(142, 25);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "(yyyy-mm-dd)";
-            // 
-            // EmpID
-            // 
-            this.EmpID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.EmpID.Frozen = true;
-            this.EmpID.HeaderText = "Employee ID";
-            this.EmpID.Name = "EmpID";
-            this.EmpID.ReadOnly = true;
-            this.EmpID.Width = 227;
-            // 
-            // EmpName
-            // 
-            this.EmpName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EmpName.FillWeight = 400F;
-            this.EmpName.HeaderText = "Employee Name";
-            this.EmpName.Name = "EmpName";
-            this.EmpName.ReadOnly = true;
-            // 
-            // InTime
-            // 
-            this.InTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.InTime.HeaderText = "In Time";
-            this.InTime.Name = "InTime";
-            this.InTime.Width = 158;
-            // 
-            // OutTime
-            // 
-            this.OutTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.OutTime.HeaderText = "Out Time";
-            this.OutTime.Name = "OutTime";
-            this.OutTime.Width = 181;
-            // 
-            // Absent
-            // 
-            this.Absent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Absent.FillWeight = 10F;
-            this.Absent.HeaderText = "Absent";
-            this.Absent.Name = "Absent";
-            this.Absent.Width = 111;
             // 
             // DailyAttendanceEntryForm
             // 
@@ -396,8 +402,8 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1790, 1304);
             this.Controls.Add(this.FormTitle);
-            this.Controls.Add(this.panelSingleEntry);
             this.Controls.Add(this.panelTableEntry);
+            this.Controls.Add(this.panelSingleEntry);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DailyAttendanceEntryForm";
