@@ -72,21 +72,28 @@ namespace Payroll_standalone
         }
         public void loadTocbxEmpID()
         {
-            using (db)
+            try
             {
-                db.Open();
-                var query = "SELECT ID FROM employeedatabase";
-                using (var command = new MySqlCommand(query, db))
+                using (db)
                 {
-                    using (var reader = command.ExecuteReader())
+                    db.Open();
+                    var query = "SELECT ID FROM employeedatabase";
+                    using (var command = new MySqlCommand(query, db))
                     {
-                        while (reader.Read())
+                        using (var reader = command.ExecuteReader())
                         {
-                            cBxEmpID.Items.Add(reader.GetString("ID"));
+                            while (reader.Read())
+                            {
+                                cBxEmpID.Items.Add(reader.GetString("ID"));
+                            }
                         }
                     }
+                    db.Close();
                 }
-                db.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         

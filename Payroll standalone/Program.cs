@@ -16,7 +16,7 @@ namespace Payroll_standalone
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DailyAttendanceEntryForm());
+            Application.Run(new Switchboard());
         }
     }
 }
