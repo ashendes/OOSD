@@ -34,9 +34,10 @@ C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\EnvDTE.xml
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\EnvDTE80.xml
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll standalone.csprojResolveAssemblyReference.cache
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.DailyAttendanceEntryForm.resources
-C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Form1.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.SalaryAmendmentForm.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Properties.Resources.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.SalaryInfo.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Switchboard.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll standalone.csproj.GenerateResource.Cache
+C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Amendment_Rates.resources
+C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Login.resources

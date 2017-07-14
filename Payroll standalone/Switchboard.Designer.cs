@@ -41,6 +41,8 @@
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSalCalc = new System.Windows.Forms.Button();
+            this.btnEditRates = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -146,15 +148,37 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEditRates);
+            this.groupBox1.Controls.Add(this.btnSalCalc);
             this.groupBox1.Controls.Add(this.btnDAE);
             this.groupBox1.Controls.Add(this.btnSA);
             this.groupBox1.Location = new System.Drawing.Point(1484, 340);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(481, 427);
+            this.groupBox1.Size = new System.Drawing.Size(481, 541);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payroll Activities";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnSalCalc
+            // 
+            this.btnSalCalc.Location = new System.Drawing.Point(29, 401);
+            this.btnSalCalc.Name = "btnSalCalc";
+            this.btnSalCalc.Size = new System.Drawing.Size(417, 86);
+            this.btnSalCalc.TabIndex = 15;
+            this.btnSalCalc.Text = "Calculate Salary";
+            this.btnSalCalc.UseVisualStyleBackColor = true;
+            this.btnSalCalc.Click += new System.EventHandler(this.btnSalCalc_Click);
+            // 
+            // btnEditRates
+            // 
+            this.btnEditRates.Location = new System.Drawing.Point(29, 287);
+            this.btnEditRates.Name = "btnEditRates";
+            this.btnEditRates.Size = new System.Drawing.Size(417, 86);
+            this.btnEditRates.TabIndex = 16;
+            this.btnEditRates.Text = "Edit Rates";
+            this.btnEditRates.UseVisualStyleBackColor = true;
+            this.btnEditRates.Click += new System.EventHandler(this.btnEditRates_Click);
             // 
             // Switchboard
             // 
@@ -196,5 +220,7 @@
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnSalCalc;
+        private System.Windows.Forms.Button btnEditRates;
     }
 }

@@ -11,11 +11,11 @@ using MySql.Data.MySqlClient;
 
 namespace Payroll_standalone
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         MySqlConnection dbconnection = new MySqlConnection("datasource=localhost;port=3306;username=root;password=");
         int i;
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }

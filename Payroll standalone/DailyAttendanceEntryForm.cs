@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Globalization;
 
 namespace Payroll_standalone
 {
@@ -129,20 +130,28 @@ namespace Payroll_standalone
 
         private void cBxEmpID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (db)
+            try
             {
-                db.Open();
-                var query = "SELECT * FROM employeedatabase where ID= '"+ cBxEmpID.Text + "'";
-                using (var command = new MySqlCommand(query, db))
+                using (db)
                 {
-                    using (var reader = command.ExecuteReader())
+                    db.Open();
+                    var query = "SELECT * FROM employeedatabase where ID= '" + cBxEmpID.Text + "'";
+                    using (var command = new MySqlCommand(query, db))
                     {
-                        reader.Read();
-                        tbxEmpName.Text = reader.GetString("First name") +" "+ reader.GetString("Last name");                        
+                        using (var reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            tbxEmpName.Text = reader.GetString("First name") + " " + reader.GetString("Last name");
+                        }
                     }
+                    db.Close();
                 }
-                db.Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }      
+
         }
 
        
@@ -196,27 +205,73 @@ namespace Payroll_standalone
             //dateTimePicker3.Value= ;
         }
 
+        private double calculateHoursWorked(DateTimePicker dt1, DateTimePicker dt2)
+        {
+            var ts = (dt2.Value - dt1.Value).TotalHours;
+            if (ts >= 0)
+            {
+                return ((Math.Round(ts * 2, MidpointRounding.AwayFromZero)) / 2);
+            }
+            else
+            {
+                MessageBox.Show("Invalid times entered.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dt1.Focus();
+                return 0;
+            }            
+        }
+
+        private double calculateHoursWorked(DateTime dt1, DateTime dt2)
+        {
+            var ts = (dt2 - dt1).TotalHours;
+            if (ts >= 0)
+            {
+                return ((Math.Round(ts * 2, MidpointRounding.AwayFromZero)) / 2);
+            }
+            else
+            {
+                MessageBox.Show("Invalid times entered.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                return 0;
+            }
+        }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (db)
-                {
-
-                    var query = "INSERT into attendance VALUES (" + Convert.ToInt32(cBxEmpID.Text) + ",'" + dateTimePicker2.Value.Date.ToString("yyyy-MM-dd") + "','" + dateTimePicker3.Value.TimeOfDay + "','" + dateTimePicker4.Value.TimeOfDay + "')";
-                    using (var command = new MySqlCommand(query, db))
-                    {
-                        db.Open();
-                        command.ExecuteNonQuery();                 
-                        db.Close();
-                    }
-                    MessageBox.Show("Attendance updated for Employee " + cBxEmpID.Text + ":" + tbxEmpName.Text, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+            double hours_worked = calculateHoursWorked(dateTimePicker3, dateTimePicker4);
             
-            }catch (Exception ex)
+            double OThours;
+            if (hours_worked != 0)
             {
-                MessageBox.Show(ex.Message);
+                if (hours_worked >= 8) {
+                     OThours = hours_worked - 8;
+                }
+                else
+                {
+                    OThours = 0;
+                }
+                
+                try
+                {
+                    using (db)
+                    {
+
+                        var query = "INSERT into attendance VALUES (" + Convert.ToInt32(cBxEmpID.Text) + ",'" + dateTimePicker2.Value.Date.ToString("yyyy-MM-dd") + "','" + dateTimePicker3.Value.TimeOfDay + "','" + dateTimePicker4.Value.TimeOfDay + "','" + hours_worked + "','" + OThours + "')";
+                        using (var command = new MySqlCommand(query, db))
+                        {
+                            db.Open();
+                            command.ExecuteNonQuery();                 
+                            db.Close();
+                        }
+                        MessageBox.Show("Attendance updated for Employee " + cBxEmpID.Text + ":" + tbxEmpName.Text, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cBxEmpID.SelectedIndex = cBxEmpID.SelectedIndex + 1;
+                    }
+            
+                }catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
+            
         }
 
        
@@ -227,9 +282,10 @@ namespace Payroll_standalone
             {
                 using (db)
                 {
-                    db.Open();
                     
-                    var query = "INSERT into attendance VALUES (@EmpID, @Date, @InTime, @OutTime)";
+                    double hours_worked;
+                    double OThours;
+                    var query = "INSERT into attendance (Emp_ID, Date, In_Time, Out_Time, `Hours Worked`, `OT Hours`) VALUES (@EmpID, @Date, @InTime, @OutTime, @HoursWorked, @OTHours)";
                     using (var command = new MySqlCommand(query, db))
                     {
                         foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -238,15 +294,33 @@ namespace Payroll_standalone
                             {
                                 continue;
                             }
-                            command.Parameters.AddWithValue("@EmpID", Convert.ToInt32(row.Cells[0].Value));
-                            command.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"));
-                            command.Parameters.AddWithValue("@InTime", row.Cells[2].Value);
-                            command.Parameters.AddWithValue("@OutTime", row.Cells[3].Value);
-                            command.ExecuteNonQuery();
-                            command.Parameters.Clear();
+                            hours_worked = calculateHoursWorked(Convert.ToDateTime(row.Cells[2].Value), Convert.ToDateTime(row.Cells[3].Value));
+
+
+                            if (hours_worked != 0)
+                            {
+                                if (hours_worked >= 8)
+                                {
+                                    OThours = hours_worked - 8;
+                                }
+                                else
+                                {
+                                    OThours = 0;
+                                }
+                                db.Open();
+                                command.Parameters.AddWithValue("@EmpID", Convert.ToInt32(row.Cells[0].Value));
+                                command.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"));
+                                command.Parameters.AddWithValue("@InTime", row.Cells[2].Value);
+                                command.Parameters.AddWithValue("@OutTime", row.Cells[3].Value);
+                                command.Parameters.AddWithValue("@HoursWorked", hours_worked.ToString());
+                                command.Parameters.AddWithValue("@OTHours", OThours.ToString());
+                                command.ExecuteNonQuery();
+                                command.Parameters.Clear();
+                                db.Close();
+                            }
                         }                      
                     }
-                    db.Close();
+                    
                     MessageBox.Show("Attendance updated for " + dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"),"" ,MessageBoxButtons.OK,MessageBoxIcon.Information);
                     clearDataGrid();
                 }

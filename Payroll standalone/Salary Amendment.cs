@@ -76,7 +76,7 @@ namespace Payroll_standalone
             {
                 MessageBox.Show(ex.Message);
             }
-}
+        }
 
         private void cbxEmpID_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -130,9 +130,13 @@ namespace Payroll_standalone
             {
                 typeIndex = 1;
             }
-            else if (cbxAmendType.Text == "Bonus")
+            else if (cbxAmendType.Text == "Allowance")
             {
                 typeIndex = 2;
+            }
+            else if (cbxAmendType.Text == "Bonus")
+            {
+                typeIndex = 3;
             }
         }
 

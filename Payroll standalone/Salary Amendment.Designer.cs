@@ -135,6 +135,7 @@
             this.cbxAmendType.FormattingEnabled = true;
             this.cbxAmendType.Items.AddRange(new object[] {
             "Advance",
+            "Allowance",
             "Bonus"});
             this.cbxAmendType.Location = new System.Drawing.Point(496, 329);
             this.cbxAmendType.Name = "cbxAmendType";

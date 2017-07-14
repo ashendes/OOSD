@@ -51,5 +51,19 @@ namespace Payroll_standalone
         {
 
         }
+
+        private void btnSalCalc_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new SalaryInfo();
+            form.Show();
+        }
+
+        private void btnEditRates_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new Amendment_Rates();
+            form.Show();
+        }
     }
 }

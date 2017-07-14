@@ -271,7 +271,7 @@
             this.dateTimePicker4.ShowUpDown = true;
             this.dateTimePicker4.Size = new System.Drawing.Size(530, 40);
             this.dateTimePicker4.TabIndex = 11;
-            this.dateTimePicker4.Value = new System.DateTime(2017, 7, 9, 17, 0, 0, 0);
+            this.dateTimePicker4.Value = new System.DateTime(2017, 7, 13, 17, 0, 0, 0);
             // 
             // dateTimePicker3
             // 
@@ -282,7 +282,7 @@
             this.dateTimePicker3.ShowUpDown = true;
             this.dateTimePicker3.Size = new System.Drawing.Size(530, 40);
             this.dateTimePicker3.TabIndex = 10;
-            this.dateTimePicker3.Value = new System.DateTime(2017, 7, 9, 8, 0, 0, 0);
+            this.dateTimePicker3.Value = new System.DateTime(2017, 7, 13, 8, 0, 0, 0);
             // 
             // btnAddAll
             // 
@@ -400,6 +400,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1790, 1304);
             this.Controls.Add(this.FormTitle);
             this.Controls.Add(this.panelTableEntry);
