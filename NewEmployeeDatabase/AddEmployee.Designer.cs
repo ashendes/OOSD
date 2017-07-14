@@ -61,6 +61,10 @@
             this.tbSalary = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,7 +135,7 @@
             // 
             // tbLname
             // 
-            this.tbLname.Location = new System.Drawing.Point(507, 147);
+            this.tbLname.Location = new System.Drawing.Point(507, 141);
             this.tbLname.Name = "tbLname";
             this.tbLname.Size = new System.Drawing.Size(222, 22);
             this.tbLname.TabIndex = 34;
@@ -217,7 +221,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(399, 271);
+            this.label7.Location = new System.Drawing.Point(426, 271);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 17);
             this.label7.TabIndex = 45;
@@ -244,7 +248,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(399, 150);
+            this.label4.Location = new System.Drawing.Point(406, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 17);
             this.label4.TabIndex = 38;
@@ -321,6 +325,10 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.tbSalary);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.tbEmail);
@@ -384,6 +392,42 @@
             this.label15.TabIndex = 59;
             this.label15.Text = "Add Employee";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(735, 76);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(13, 17);
+            this.label16.TabIndex = 60;
+            this.label16.Text = "*";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(735, 141);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(13, 17);
+            this.label17.TabIndex = 61;
+            this.label17.Text = "*";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(380, 141);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(13, 17);
+            this.label18.TabIndex = 62;
+            this.label18.Text = "*";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(376, 593);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(13, 17);
+            this.label19.TabIndex = 63;
+            this.label19.Text = "*";
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -438,5 +482,9 @@
         private System.Windows.Forms.TextBox tbSalary;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
     }
 }
