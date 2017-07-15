@@ -117,7 +117,14 @@ namespace MainUI
 
         private void btnLeave_Click(object sender, EventArgs e)
         {
-            var form = new ();
+            var form = new Leave();
+            form.Show();
+        }
+
+        private void btnViewPayroll_Click(object sender, EventArgs e)
+        {
+            var form = new ViewPayrollInfo();
+            form.Show();
         }
     }
 }

@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using Payroll_standalone;
 
-namespace Employee_Leave
+
+namespace Payroll_standalone
 {
     public partial class Leave : Form
     {
@@ -199,6 +199,11 @@ namespace Employee_Leave
         private void cbUtype_SelectedIndexChanged(object sender, EventArgs e)
         {
             setUpdateButtonState();
+        }
+
+        private void tbId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

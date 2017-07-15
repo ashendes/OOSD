@@ -61,5 +61,10 @@ namespace NewEmployeeDatabase
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dataGridViewDatabase_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

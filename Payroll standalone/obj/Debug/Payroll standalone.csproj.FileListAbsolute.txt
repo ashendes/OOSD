@@ -59,5 +59,6 @@ C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
-C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Employee_Leave.Leave.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.PayslipViewer.resources
+C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Leave.resources
+C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.ViewPayrollInfo.resources

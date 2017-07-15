@@ -20,3 +20,6 @@ c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leav
 c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
 c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\stdole.dll
 c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Microsoft.MSXML.dll
+C:\Users\ASUS\Documents\Repos\OOSD\Employee Leave\bin\Debug\Employee Leave.exe.config
+C:\Users\ASUS\Documents\Repos\OOSD\Employee Leave\obj\Debug\Employee Leave.exe
+C:\Users\ASUS\Documents\Repos\OOSD\Employee Leave\obj\Debug\Employee Leave.pdb
