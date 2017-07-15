@@ -18,6 +18,7 @@ namespace Payroll_standalone
         double EPF_Rate;
         double ETF_Rate;
         double OT_Rate;
+        SalaryRecord currentRecord;
 
         public SalaryInfo()
         {
@@ -110,17 +111,18 @@ namespace Payroll_standalone
             {
                 using (db)
                 {
-                    var query = "SELECT * FROM salaryinfo ORDER BY PayslipID DESC LIMIT 1";
+                    var query = "SHOW TABLE STATUS";
                     using (var command = new MySqlCommand(query, db))
                     {
                         db.Open();
                         using (var reader = command.ExecuteReader())
                         {
-                            
-                            reader.Read();
-                            tbxPSID.Text = Convert.ToString(reader.GetInt32("PayslipID") + 1);                            
-                            
 
+                            while (reader.Read())
+                            {
+                                if (reader.GetString("Name") == "salaryinfo") { tbxPSID.Text = reader.GetString(10); }
+                                
+                            }
                         }
                         db.Close();
                     }
@@ -242,9 +244,17 @@ namespace Payroll_standalone
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnReset_Click(object sender, EventArgs e)
         {
             onLoad();
+            tbxBasicSal.ReadOnly = false;
+            tbxWHours.ReadOnly = false;
+            tbxOTHours.ReadOnly = false;
+            tbxAllowances.ReadOnly = false;
+            tbxAdvances.ReadOnly = false;
+            tbxBonuses.ReadOnly = false;
+            tbxArrears.ReadOnly = false;
             cbxEmpID.Text = "";
             tbxGSal.Text = "";
             tbxOTPay.Text = "";
@@ -261,6 +271,7 @@ namespace Payroll_standalone
             tbxAllowances.Text = "";
             tbxAdvances.Text = "";
             tbxBonuses.Text = "";
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -271,6 +282,13 @@ namespace Payroll_standalone
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             calculateSalary();
+            tbxBasicSal.ReadOnly=true;
+            tbxWHours.ReadOnly = true;
+            tbxOTHours.ReadOnly = true;
+            tbxAllowances.ReadOnly = true;
+            tbxAdvances.ReadOnly = true;
+            tbxBonuses.ReadOnly = true;
+            tbxArrears.ReadOnly = true;
 
         }
 
@@ -288,22 +306,26 @@ namespace Payroll_standalone
             tbxEPF.Text = EPF.ToString();
             tbxETF.Text = ETF.ToString();
             tbxNetSal.Text = NetSal.ToString();
+            currentRecord = new SalaryRecord(tbxPSID.Text, cbxEmpID.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), month.Value.Month.ToString(), year.Text, tbxBasicSal.Text, tbxWHours.Text, tbxOTHours.Text, tbxAllowances.Text, tbxAdvances.Text, tbxAdvances.Text, tbxArrears.Text, tbxGSal.Text, tbxOTPay.Text, tbxEPF.Text, tbxETF.Text, tbxNetSal.Text);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 using (db)
                 {
-                    var query = "INSERT into salaryinfo  VALUES (@PayslipID, @EmpID, @DateOfCalculation, @month, @year, @BasicSal, @totalhours, @totalOThours, @totalAllowances, @totalAdvances, @totalBonuses, @arrears, @GSal, @OTPay, @EPF, @ETF, @NetSal)";
+                    //var query = "INSERT INTO salaryinfo (`EmpID`, `Date_of_Calculation`, `Month`, `Year`, `Basic Salary`, `Total hours worked`, `Total OT hours`, `Total Allowances`, `Total Advances`, `Total bonuses`, `Arrears`, `GrossSalary`, `OTPay`, `EPF`, `ETF`, `NetSalary`) VALUES (@EmpID,@DateOfCalculation,@month,@year,@BasicSal,@totalhours,@totalOThours, @totalAllowances,@totalAdvances,@totalBonuses,@arrears,@GSal,@OTPay,@EPF,@ETF,@NetSal)";
+                    //var query = "INSERT INTO `salaryinfo`(EmpID, `Date_of_Calculation`, `Year`, `Basic Salary`, `Total hours worked`, `Total OT hours`, `Total Allowances`, `Total Advances`, `Total bonuses`, `Arrears`, `GrossSalary`, `OTPay`, `EPF`, `ETF`, `NetSalary`) VALUES(" +cbxEmpID.Text+ ",`" + DateTime.Now.Date.ToString("yyyy-MM-dd") +"`," + year.Text + "," + tbxBasicSal.Text + ",`" + tbxWHours.Text + "`,`" + tbxOTHours.Text + "`,`" + tbxAllowances.Text + "`,`" + tbxAdvances.Text + "`,`" + tbxBonuses.Text + "`,`" + tbxArrears.Text + "`,`" + tbxGSal.Text + "`,`" + tbxOTPay.Text + "`,`" + tbxEPF.Text + "`,`" + tbxETF.Text + "`,`" + tbxNetSal.Text + "`)";
+                    var query = "INSERT INTO salaryinfo (`EmpID`, `Date_of_Calculation`, `Month`, `Year`, `Basic Salary`, `Total hours worked`, `Total OT hours`, `Total Allowances`, `Total Advances`, `Total bonuses`, `Arrears`,`GrossSalary`, `OTPay`, `EPF`, `ETF`, `NetSalary`) VALUES (@EmpID,@DateOfCalculation,@month,@year,@BasicSal,@totalhours,@totalOThours, @totalAllowances,@totalAdvances,@totalBonuses,@arrears,@GSal,@OTPay,@EPF,@ETF,@NetSal)";
                     using (var command = new MySqlCommand(query, db))
-                    {                       
+                    {
                         db.Open();
-                        command.Parameters.AddWithValue("@PayslipID", tbxPSID.Text);
+                        //command.Parameters.AddWithValue("@PayslipID", tbxPSID.Text);
                         command.Parameters.AddWithValue("@EmpID", cbxEmpID.Text);
-                        command.Parameters.AddWithValue("@DateOfCalculation", DateTime.Now.ToString());
-                        command.Parameters.AddWithValue("@month", month.Text);
+                        command.Parameters.AddWithValue("@DateOfCalculation", DateTime.Now.Date.ToString("yyyy-MM-dd"));
+                        command.Parameters.AddWithValue("@month", month.Value.Month);
                         command.Parameters.AddWithValue("@year", year.Text);
                         command.Parameters.AddWithValue("@BasicSal", tbxBasicSal.Text);
                         command.Parameters.AddWithValue("@totalhours", tbxWHours.Text);
@@ -312,22 +334,32 @@ namespace Payroll_standalone
                         command.Parameters.AddWithValue("@totalAdvances", tbxAdvances.Text);
                         command.Parameters.AddWithValue("@totalBonuses", tbxBonuses.Text);                        
                         command.Parameters.AddWithValue("@arrears", tbxArrears.Text);
-                        command.Parameters.AddWithValue("@GSal,", tbxGSal.Text);
+                        /*command.Parameters.AddWithValue("@GSal,", tbxGSal.Text);
                         command.Parameters.AddWithValue("@OTPay,", tbxOTPay.Text);
                         command.Parameters.AddWithValue("@EPF", tbxEPF.Text);
                         command.Parameters.AddWithValue("@ETF", tbxETF.Text);
-                        command.Parameters.AddWithValue("@NetSal", tbxNetSal.Text);
+                        command.Parameters.AddWithValue("@NetSal", tbxNetSal.Text);*/
+                        command.Parameters.Add("@GSal", MySqlDbType.Double);
+                        command.Parameters["@GSal"].Value = tbxGSal.Text;
+                        command.Parameters.Add("@OTPay", MySqlDbType.Double);
+                        command.Parameters["@OTPay"].Value = tbxOTPay.Text;
+                        command.Parameters.Add("@EPF", MySqlDbType.Double);
+                        command.Parameters["@EPF"].Value = tbxEPF.Text;
+                        command.Parameters.Add("@ETF", MySqlDbType.Double);
+                        command.Parameters["@ETF"].Value = tbxETF.Text;
+                        command.Parameters.Add("@NetSal", MySqlDbType.Double);
+                        command.Parameters["@NetSal"].Value = tbxNetSal.Text;
                         command.ExecuteNonQuery();
-                        command.Parameters.Clear();
-                        db.Close();                           
+                        db.Close();
                     }
 
-                    MessageBox.Show("Salary details added for " + cbxEmpID.Text + ": " + tbxEmpName, ""+ month.Text + " " + year.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+                    MessageBox.Show("Salary details added for " + cbxEmpID.Text + ": " + tbxEmpName, "" + month.Text + " " + year.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
 
+
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
