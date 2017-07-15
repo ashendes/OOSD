@@ -1,0 +1,22 @@
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Employee Leave.exe.config
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Employee Leave.exe
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Employee Leave.pdb
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\obj\Debug\Employee Leave.csprojResolveAssemblyReference.cache
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\obj\Debug\Employee_Leave.Properties.Resources.resources
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\obj\Debug\Employee Leave.csproj.GenerateResource.Cache
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\obj\Debug\Employee Leave.exe
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\obj\Debug\Employee Leave.pdb
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\obj\Debug\Employee_Leave.Leave.resources
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\mysql.data.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\mysql.data.entity.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\mysql.visualstudio.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\mysql.web.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\EnvDTE.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\EnvDTE80.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\stdole.dll
+c:\Users\User\Documents\Visual Studio 2017\Projects\Employee Leave\Employee Leave\bin\Debug\Microsoft.MSXML.dll
