@@ -90,7 +90,7 @@ namespace NewEmployeeDatabase
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Form updateNew = new Update(emp.id, emp.fullName, emp.fName, emp.lName, emp.dept, emp.desig, emp.resTel, emp.mobNum, emp.address, emp.email, emp.dob, emp.hireDate, emp.gender);
+            Form updateNew = new Update(emp.getId(), emp.getFullName(), emp.getFname(), emp.getLname(), emp.getDept(), emp.getDesig(), emp.getResTel(), emp.getMob(), emp.getAddress(), emp.getEmail(), emp.getDob(), emp.getHireDate(), emp.getGender());
             updateNew.ShowDialog();
         }
 
@@ -109,25 +109,25 @@ namespace NewEmployeeDatabase
 
         private void setEmployeeAttributes(DataGridViewRow row)
         {
-            emp.id = row.Cells["ColumnID"].Value.ToString();
-            emp.fullName = row.Cells["ColumnFull"].Value.ToString();
-            emp.fName = row.Cells["ColumnFirst"].Value.ToString();
-            emp.lName = row.Cells["ColumnLast"].Value.ToString();
-            emp.dept = row.Cells["ColumnDept"].Value.ToString();
-            emp.desig = row.Cells["ColumnDes"].Value.ToString();
-            emp.mobNum = row.Cells["ColumnMob"].Value.ToString();
-            emp.address = row.Cells["ColumnAddress"].Value.ToString();
-            emp.dob = row.Cells["ColumnDob"].Value.ToString();
-            emp.gender = row.Cells["ColumnGen"].Value.ToString();
-            emp.email = row.Cells["ColumnEmail"].Value.ToString();
-            emp.resTel = row.Cells["ColumnRes"].Value.ToString();
-            emp.hireDate = row.Cells["ColumnHire"].Value.ToString();
-            emp.salary = row.Cells["ColumnSalary"].Value.ToString();
+            emp.setId(row.Cells["ColumnID"].Value.ToString());
+            emp.setFullName(row.Cells["ColumnFull"].Value.ToString());
+            emp.setFname(row.Cells["ColumnFirst"].Value.ToString());
+            emp.setLname(row.Cells["ColumnLast"].Value.ToString());
+            emp.setDept(row.Cells["ColumnDept"].Value.ToString());
+            emp.setDesig(row.Cells["ColumnDes"].Value.ToString());
+            emp.setMob(row.Cells["ColumnMob"].Value.ToString());
+            emp.setAddress(row.Cells["ColumnAddress"].Value.ToString());
+            emp.setDob(row.Cells["ColumnDob"].Value.ToString());
+            emp.setGender(row.Cells["ColumnGen"].Value.ToString());
+            emp.setEmail(row.Cells["ColumnEmail"].Value.ToString());
+            emp.setResTel(row.Cells["ColumnRes"].Value.ToString());
+            emp.setHireDate(row.Cells["ColumnHire"].Value.ToString());
+            emp.setSalary(row.Cells["ColumnSalary"].Value.ToString());
         }
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            Form viewEmp = new ViewEmployee(emp.id, emp.fullName, emp.fName, emp.lName, emp.dept, emp.desig, emp.resTel, emp.mobNum, emp.address, emp.email, emp.dob, emp.hireDate, emp.gender,emp.salary);
+            Form viewEmp = new ViewEmployee(emp.getId(), emp.getFullName(), emp.getFname(), emp.getLname(), emp.getDept(), emp.getDesig(), emp.getResTel(), emp.getMob(), emp.getAddress(), emp.getEmail(), emp.getDob(), emp.getHireDate(), emp.getGender(), emp.getSalary());
             viewEmp.ShowDialog();
         }
     }
