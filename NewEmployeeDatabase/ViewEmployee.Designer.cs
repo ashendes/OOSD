@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewEmployee));
             this.lbName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbId = new System.Windows.Forms.Label();
@@ -326,6 +327,7 @@
             this.Controls.Add(this.lbId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewEmployee";
             this.Text = "ViewEmployee";
             this.Load += new System.EventHandler(this.ViewEmployee_Load);

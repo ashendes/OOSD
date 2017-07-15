@@ -82,7 +82,9 @@ namespace NewEmployeeDatabase
             {
                 MySqlConnection conLoad = new MySqlConnection(conString);
                 string query2 = "SHOW TABLE STATUS LIKE 'employeedatabase'";
-                MySqlCommand command2 = new MySqlCommand(query2, conLoad);
+                MySqlCommand command2 = conLoad.CreateCommand();
+                command2.CommandText = query2;
+
                 conLoad.Open();
                 MySqlDataReader reader = command2.ExecuteReader();
                 while (reader.Read())

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEmployee));
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tbMobile = new System.Windows.Forms.TextBox();
@@ -58,13 +59,13 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.tbSalary = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +74,7 @@
             this.tbEmail.Location = new System.Drawing.Point(175, 401);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(203, 22);
-            this.tbEmail.TabIndex = 46;
+            this.tbEmail.TabIndex = 9;
             // 
             // label13
             // 
@@ -89,7 +90,7 @@
             this.tbMobile.Location = new System.Drawing.Point(507, 533);
             this.tbMobile.Name = "tbMobile";
             this.tbMobile.Size = new System.Drawing.Size(222, 22);
-            this.tbMobile.TabIndex = 52;
+            this.tbMobile.TabIndex = 12;
             this.tbMobile.TextChanged += new System.EventHandler(this.tbMobile_TextChanged);
             // 
             // cbGender
@@ -101,28 +102,28 @@
             this.cbGender.Location = new System.Drawing.Point(507, 273);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(222, 24);
-            this.cbGender.TabIndex = 40;
+            this.cbGender.TabIndex = 6;
             // 
             // dtHire
             // 
             this.dtHire.Location = new System.Drawing.Point(171, 466);
             this.dtHire.Name = "dtHire";
             this.dtHire.Size = new System.Drawing.Size(203, 22);
-            this.dtHire.TabIndex = 49;
+            this.dtHire.TabIndex = 10;
             // 
             // dtDob
             // 
             this.dtDob.Location = new System.Drawing.Point(175, 271);
             this.dtDob.Name = "dtDob";
             this.dtDob.Size = new System.Drawing.Size(203, 22);
-            this.dtDob.TabIndex = 39;
+            this.dtDob.TabIndex = 5;
             // 
             // tbDept
             // 
             this.tbDept.Location = new System.Drawing.Point(175, 338);
             this.tbDept.Name = "tbDept";
             this.tbDept.Size = new System.Drawing.Size(203, 22);
-            this.tbDept.TabIndex = 42;
+            this.tbDept.TabIndex = 7;
             this.tbDept.TextChanged += new System.EventHandler(this.tbDept_TextChanged);
             // 
             // tbAddress
@@ -131,14 +132,14 @@
             this.tbAddress.Multiline = true;
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(554, 38);
-            this.tbAddress.TabIndex = 36;
+            this.tbAddress.TabIndex = 4;
             // 
             // tbLname
             // 
             this.tbLname.Location = new System.Drawing.Point(507, 141);
             this.tbLname.Name = "tbLname";
             this.tbLname.Size = new System.Drawing.Size(222, 22);
-            this.tbLname.TabIndex = 34;
+            this.tbLname.TabIndex = 3;
             this.tbLname.TextChanged += new System.EventHandler(this.tbLname_TextChanged);
             // 
             // tbFname
@@ -146,7 +147,7 @@
             this.tbFname.Location = new System.Drawing.Point(175, 141);
             this.tbFname.Name = "tbFname";
             this.tbFname.Size = new System.Drawing.Size(199, 22);
-            this.tbFname.TabIndex = 33;
+            this.tbFname.TabIndex = 2;
             this.tbFname.TextChanged += new System.EventHandler(this.tbFname_TextChanged);
             // 
             // tbPosition
@@ -154,7 +155,7 @@
             this.tbPosition.Location = new System.Drawing.Point(507, 338);
             this.tbPosition.Name = "tbPosition";
             this.tbPosition.Size = new System.Drawing.Size(222, 22);
-            this.tbPosition.TabIndex = 44;
+            this.tbPosition.TabIndex = 8;
             this.tbPosition.TextChanged += new System.EventHandler(this.tbPosition_TextChanged);
             // 
             // tbResident
@@ -162,7 +163,7 @@
             this.tbResident.Location = new System.Drawing.Point(171, 533);
             this.tbResident.Name = "tbResident";
             this.tbResident.Size = new System.Drawing.Size(199, 22);
-            this.tbResident.TabIndex = 51;
+            this.tbResident.TabIndex = 11;
             this.tbResident.TextChanged += new System.EventHandler(this.tbResident_TextChanged);
             // 
             // tbFullname
@@ -170,7 +171,7 @@
             this.tbFullname.Location = new System.Drawing.Point(175, 76);
             this.tbFullname.Name = "tbFullname";
             this.tbFullname.Size = new System.Drawing.Size(554, 22);
-            this.tbFullname.TabIndex = 31;
+            this.tbFullname.TabIndex = 1;
             this.tbFullname.TextChanged += new System.EventHandler(this.tbFullname_TextChanged);
             // 
             // label12
@@ -287,7 +288,7 @@
             this.tbId.Name = "tbId";
             this.tbId.ReadOnly = true;
             this.tbId.Size = new System.Drawing.Size(100, 22);
-            this.tbId.TabIndex = 30;
+            this.tbId.TabIndex = 0;
             // 
             // btnSave
             // 
@@ -365,12 +366,48 @@
             this.panel1.Size = new System.Drawing.Size(753, 716);
             this.panel1.TabIndex = 58;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(376, 593);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(13, 17);
+            this.label19.TabIndex = 63;
+            this.label19.Text = "*";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(380, 141);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(13, 17);
+            this.label18.TabIndex = 62;
+            this.label18.Text = "*";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(735, 141);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(13, 17);
+            this.label17.TabIndex = 61;
+            this.label17.Text = "*";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(735, 76);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(13, 17);
+            this.label16.TabIndex = 60;
+            this.label16.Text = "*";
+            // 
             // tbSalary
             // 
             this.tbSalary.Location = new System.Drawing.Point(171, 593);
             this.tbSalary.Name = "tbSalary";
             this.tbSalary.Size = new System.Drawing.Size(199, 22);
-            this.tbSalary.TabIndex = 59;
+            this.tbSalary.TabIndex = 13;
             this.tbSalary.TextChanged += new System.EventHandler(this.tbSalary_TextChanged);
             // 
             // label14
@@ -392,42 +429,6 @@
             this.label15.TabIndex = 59;
             this.label15.Text = "Add Employee";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(735, 76);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(13, 17);
-            this.label16.TabIndex = 60;
-            this.label16.Text = "*";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(735, 141);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(13, 17);
-            this.label17.TabIndex = 61;
-            this.label17.Text = "*";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(380, 141);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(13, 17);
-            this.label18.TabIndex = 62;
-            this.label18.Text = "*";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(376, 593);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(13, 17);
-            this.label19.TabIndex = 63;
-            this.label19.Text = "*";
-            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -436,9 +437,10 @@
             this.ClientSize = new System.Drawing.Size(815, 820);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AddEmployee";
-            this.Text = "AddEmployee";
+            this.Text = "Add Employee";
             this.Load += new System.EventHandler(this.AddEmployee_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

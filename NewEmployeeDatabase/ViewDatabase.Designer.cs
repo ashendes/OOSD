@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewDatabase));
             this.dataGridViewDatabase = new System.Windows.Forms.DataGridView();
             this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnFirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -189,6 +190,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dataGridViewDatabase);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewDatabase";
             this.Text = "ViewDatabase";
             this.Load += new System.EventHandler(this.ViewDatabase_Load);

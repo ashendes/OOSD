@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Update));
             this.panel1 = new System.Windows.Forms.Panel();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -364,6 +365,7 @@
             this.ClientSize = new System.Drawing.Size(792, 790);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Update";
             this.Text = "Update";
             this.Load += new System.EventHandler(this.Update_Load);
