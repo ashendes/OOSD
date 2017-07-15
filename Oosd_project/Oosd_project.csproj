@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89A8223F-90D0-4E44-94EC-69796BE90BD7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Oosd_project</RootNamespace>
+    <AssemblyName>Oosd_project</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mysql.data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\MySql Plugins\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data.entity, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\MySql Plugins\mysql.data.entity.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.visualstudio">
+      <HintPath>..\..\..\..\..\Desktop\MySql Plugins\mysql.visualstudio.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\MySql Plugins\mysql.web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New_Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_Product.Designer.cs">
+      <DependentUpon>New_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New_Resource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_Resource.Designer.cs">
+      <DependentUpon>New_Resource.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RC_Show_InvReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RC_Show_InvReport.Designer.cs">
+      <DependentUpon>RC_Show_InvReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RC_UpdateReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RC_UpdateReport.Designer.cs">
+      <DependentUpon>RC_UpdateReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resource_Control_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resource_Control_Form.Designer.cs">
+      <DependentUpon>Resource_Control_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resoure_Inventory.cs" />
+    <Compile Include="SC_Show_InvReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SC_Show_InvReport.Designer.cs">
+      <DependentUpon>SC_Show_InvReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SC_Update_Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SC_Update_Inventory.Designer.cs">
+      <DependentUpon>SC_Update_Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Show_Resource_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Show_Resource_Details.Designer.cs">
+      <DependentUpon>Show_Resource_Details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock_Control_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock_Control_Form.Designer.cs">
+      <DependentUpon>Stock_Control_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock_Inventory.cs" />
+    <Compile Include="Stock_Inventory_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock_Inventory_Details.Designer.cs">
+      <DependentUpon>Stock_Inventory_Details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs" />
+    <Compile Include="Supplier_Detail_page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier_Detail_page.Designer.cs">
+      <DependentUpon>Supplier_Detail_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_Detail_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier_Detail_Report.Designer.cs">
+      <DependentUpon>Supplier_Detail_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier_info.Designer.cs">
+      <DependentUpon>Supplier_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Update_Supplier_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update_Supplier_Detail.Designer.cs">
+      <DependentUpon>Update_Supplier_Detail.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_Product.resx">
+      <DependentUpon>New_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_Resource.resx">
+      <DependentUpon>New_Resource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RC_Show_InvReport.resx">
+      <DependentUpon>RC_Show_InvReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RC_UpdateReport.resx">
+      <DependentUpon>RC_UpdateReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource_Control_Form.resx">
+      <DependentUpon>Resource_Control_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SC_Show_InvReport.resx">
+      <DependentUpon>SC_Show_InvReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SC_Update_Inventory.resx">
+      <DependentUpon>SC_Update_Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Show_Resource_Details.resx">
+      <DependentUpon>Show_Resource_Details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock_Control_Form.resx">
+      <DependentUpon>Stock_Control_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock_Inventory_Details.resx">
+      <DependentUpon>Stock_Inventory_Details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier_Detail_page.resx">
+      <DependentUpon>Supplier_Detail_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier_Detail_Report.resx">
+      <DependentUpon>Supplier_Detail_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier_info.resx">
+      <DependentUpon>Supplier_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Supplier_Detail.resx">
+      <DependentUpon>Update_Supplier_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\Form1.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.BaseCommandInterceptor.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.BaseExceptionInterceptor.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.BaseTableCache.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.CustomInstaller.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.InterceptorConfigurationElement.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlBulkLoader.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlClientFactory.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlClientPermission.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlClientPermissionAttribute.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlCommand.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlCommandBuilder.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlConfiguration.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlConnection.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlConnectionStringBuilder.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlDataAdapter.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlDataReader.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlError.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlException.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlHelper.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlInfoMessageEventArgs.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlInfoMessageEventHandler.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlParameter.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlParameterCollection.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlRowUpdatedEventArgs.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlRowUpdatedEventHandler.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlRowUpdatingEventArgs.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlRowUpdatingEventHandler.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlScript.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlScriptErrorEventArgs.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlScriptErrorEventHandler.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlScriptEventArgs.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlScriptServices.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlSecurityPermission.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlStatementExecutedEventHandler.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlTrace.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlTransaction.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.SecBuffer.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.SecHandle.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.SecPkgContext_Sizes.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.SECURITY_HANDLE.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.MySqlClient.SECURITY_INTEGER.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.Types.MySqlConversionException.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.Types.MySqlDateTime.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.Types.MySqlDecimal.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.ConnectDialog.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.BaseEditorControl.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.IndexColumnEditor.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.IndexColumnGridRow.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.MySplitter.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.SqlEditor.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.SqlEditorFactory.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.UDFEditor.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.VS2005PropertyGrid.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Editors.YesNoTypeConverter.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.LanguageServiceConnection.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MyInstaller.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlConnectionProperties.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlConnectionSupport.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlDataConnectionPromptDialog.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlDataObjectEnumerator.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlDataObjectIdentifierConverter.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlDataProviderPackage.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlDataSourceInformation.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlDataViewCommandHandler.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.MySqlTokenTag.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.WebConfig.ConnectionStringEditorDlg.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.WebConfig.MembershipOptionsDlg.datasource" />
+    <None Include="Properties\DataSources\MySql.Data.VisualStudio.WebConfig.WebConfigDlg.datasource" />
+    <None Include="Properties\DataSources\MySql.Web.Common.SchemaManager.datasource" />
+    <None Include="Properties\DataSources\MySql.Web.Profile.MySQLProfileProvider.datasource" />
+    <None Include="Properties\DataSources\MySql.Web.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\MySql.Web.Security.CustomInstaller.datasource" />
+    <None Include="Properties\DataSources\MySql.Web.Security.MySQLMembershipProvider.datasource" />
+    <None Include="Properties\DataSources\MySql.Web.Security.MySQLRoleProvider.datasource" />
+    <None Include="Properties\DataSources\MySql.Web.SessionState.MySqlSessionStateStore.datasource" />
+    <None Include="Properties\DataSources\New_Product.datasource" />
+    <None Include="Properties\DataSources\New_Resource.datasource" />
+    <None Include="Properties\DataSources\Oosd_project.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\Oosd_project.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\RC_Show_InvReport.datasource" />
+    <None Include="Properties\DataSources\RC_UpdateReport.datasource" />
+    <None Include="Properties\DataSources\Resource_Control_Form.datasource" />
+    <None Include="Properties\DataSources\SC_Show_InvReport.datasource" />
+    <None Include="Properties\DataSources\SC_Update_Inventory.datasource" />
+    <None Include="Properties\DataSources\Stock_Control_Form.datasource" />
+    <None Include="Properties\DataSources\Supplier_info.datasource" />
+    <None Include="Properties\DataSources\Update_Supplier_Detail.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\art.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\art3.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\art2.PNG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
