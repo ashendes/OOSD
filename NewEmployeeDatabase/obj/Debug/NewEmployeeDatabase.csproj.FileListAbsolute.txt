@@ -29,10 +29,6 @@ C:\Users\User\documents\visual studio 2017\Projects\NewEmployeeDatabase\NewEmplo
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.exe.config
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.exe
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.pdb
-C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
-C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
-C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
-C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE.dll
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE80.dll
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.MSXML.dll
@@ -49,3 +45,9 @@ C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeData
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.csproj.GenerateResource.Cache
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.exe
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.pdb
+C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\mysql.data.dll
+C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\mysql.data.entity.dll
+C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\mysql.visualstudio.dll
+C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\mysql.web.dll
+C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE.xml
+C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE80.xml

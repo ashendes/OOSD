@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Payroll_standalone
 {
     
-    class DBConnection
+    public class DBConnection
     {
         private static Queue<MySqlConnection> connectionPool = new Queue<MySqlConnection>();
 

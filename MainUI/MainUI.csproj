@@ -58,12 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnection.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MainSwitchboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainSwitchboard.Designer.cs">
+      <DependentUpon>MainSwitchboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -79,6 +78,9 @@
     <Compile Include="Switchboard.designer.cs">
       <DependentUpon>Switchboard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MainSwitchboard.resx">
+      <DependentUpon>MainSwitchboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

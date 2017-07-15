@@ -32,20 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mysql.data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\MySql Plugins\mysql.data.dll</HintPath>
+    <Reference Include="mysql.data">
+      <HintPath>..\..\..\MySql Plugins\mysql.data.dll</HintPath>
     </Reference>
-    <Reference Include="mysql.data.entity, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\MySql Plugins\mysql.data.entity.dll</HintPath>
+    <Reference Include="mysql.data.entity">
+      <HintPath>..\..\..\MySql Plugins\mysql.data.entity.dll</HintPath>
     </Reference>
     <Reference Include="mysql.visualstudio">
-      <HintPath>..\..\..\..\..\Desktop\MySql Plugins\mysql.visualstudio.dll</HintPath>
+      <HintPath>..\..\..\MySql Plugins\mysql.visualstudio.dll</HintPath>
     </Reference>
-    <Reference Include="mysql.web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\MySql Plugins\mysql.web.dll</HintPath>
+    <Reference Include="mysql.web">
+      <HintPath>..\..\..\MySql Plugins\mysql.web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
