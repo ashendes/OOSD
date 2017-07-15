@@ -6,33 +6,40 @@ using System.Threading.Tasks;
 
 namespace Payroll_standalone
 {
-    class SalaryRecord
+    public class SalaryRecord
     {
-        private string PayslipID { get; set; }
+        public string PayslipID { get; set; }
 
-        private string EmpID { get; set; }
+        public string EmpID { get; set; }
 
-        private string date_of_calculation { get; set; }
+        public string EmpName { get; set; }
+        public string designation { get; set; }
+        public string department { get; set; }
 
-        private string month { get; set; }
-        private string year { get; set; }
-        private string BasicSalary { get; set; }
-        private string totalWHours { get; set; }
-        private string totalOTHours { get; set; }
-        private string allowances { get; set; }
-        private string advances { get; set; }
-        private string bonuses { get; set; }
-        private string arrears { get; set; }
-        private string GrossSalary { get; set; }
-        private string OTPay { get; set; }
-        private string EPF { get; set; }
-        private string ETF { get; set; }
-        private string NetSalary { get; set; }
+        public string date_of_calculation { get; set; }
 
-        public SalaryRecord(string PayslipID, string EmpID, string date_of_calculation, string month, string year, string BasicSalary, string totalWHours, string totalOTHours, string allowances, string advances, string bonuses, string arrears, string GrossSalary, string OTPay, string EPF, string ETF, string NetSalary)
+        public string month { get; set; }
+        public string year { get; set; }
+        public string BasicSalary { get; set; }
+        public string totalWHours { get; set; }
+        public string totalOTHours { get; set; }
+        public string allowances { get; set; }
+        public string advances { get; set; }
+        public string bonuses { get; set; }
+        public string arrears { get; set; }
+        public string GrossSalary { get; set; }
+        public string OTPay { get; set; }
+        public string EPF { get; set; }
+        public string ETF { get; set; }
+        public string NetSalary { get; set; }
+
+        public SalaryRecord(string PayslipID, string EmpID,string EmpName, string designation, string department, string date_of_calculation, string month, string year, string BasicSalary, string totalWHours, string totalOTHours, string allowances, string advances, string bonuses, string arrears, string GrossSalary, string OTPay, string EPF, string ETF, string NetSalary)
         {
             this.PayslipID = PayslipID;
             this.EmpID = EmpID;
+            this.EmpName = EmpName;
+            this.department = department;
+            this.designation = designation;
             this.date_of_calculation = date_of_calculation;
             this.month = month;
             this.year = year;

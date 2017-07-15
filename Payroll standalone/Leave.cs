@@ -8,17 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Payroll_standalone;
 
 namespace Employee_Leave
 {
     public partial class Leave : Form
     {
-        string conString = "datasource=127.0.0.1;port=3306;username=root;password=;database=softwaredb";
+        MySqlConnection db;
         public Leave()
         {
             InitializeComponent();
             btnAdd.Enabled = false;
             btnUpdate.Enabled = false;
+            db = DBConnection.getDBConnection();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -31,8 +33,7 @@ namespace Employee_Leave
 
             try
             {
-                MySqlConnection con = new MySqlConnection(conString);
-                MySqlCommand command = con.CreateCommand();
+                MySqlCommand command = db.CreateCommand();
                 command.CommandText = "INSERT INTO leavedatabase(Leave_ID,Employee_ID,Employee_Name,Start_Date,End_Date,Leave_Type) VALUES(@lid,@eid,@name,@sdate,@edate,@type)";
 
                 command.Parameters.AddWithValue("@lid", tbLeave.Text);
@@ -42,9 +43,9 @@ namespace Employee_Leave
                 command.Parameters.AddWithValue("@edate", dtEnd.Value.ToShortDateString());
                 command.Parameters.AddWithValue("@type", cbType.Text);
 
-                con.Open();
+                db.Open();
                 command.ExecuteNonQuery();
-                con.Close();
+                db.Close();
                 MessageBox.Show("Record added successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
             catch (Exception ex)
@@ -58,16 +59,16 @@ namespace Employee_Leave
         {
             try
             {
-                MySqlConnection conLoad = new MySqlConnection(conString);
+                
                 string query2 = "SHOW TABLE STATUS LIKE 'leavedatabase'";
-                MySqlCommand command2 = new MySqlCommand(query2, conLoad);
-                conLoad.Open();
+                MySqlCommand command2 = new MySqlCommand(query2, db);
+                db.Open();
                 MySqlDataReader reader = command2.ExecuteReader();
                 while (reader.Read())
                 {
                     tbLeave.Text = reader.GetString(10);
                 }
-                conLoad.Close();
+                db.Close();
             }
             catch (Exception ex)
             {
@@ -81,9 +82,8 @@ namespace Employee_Leave
         {
             try
             {
-                MySqlConnection connection = new MySqlConnection(conString);
-
-                MySqlCommand cmd = connection.CreateCommand();
+                
+                MySqlCommand cmd = db.CreateCommand();
                 string query = "SELECT *FROM leavedatabase";
                 cmd.CommandText = query;
 
@@ -138,10 +138,10 @@ namespace Employee_Leave
         {
             try
             {
-                MySqlConnection getCon = new MySqlConnection(conString);
+                
                 string query3 = "SELECT Employee_ID, Employee_Name, Start_Date, End_Date, Leave_Type FROM leavedatabase WHERE Leave_ID = '" + tbUleave.Text + "'";
-                MySqlCommand comm = new MySqlCommand(query3, getCon);
-                getCon.Open();
+                MySqlCommand comm = new MySqlCommand(query3, db);
+                db.Open();
                 MySqlDataReader reader2 = comm.ExecuteReader();
                 while (reader2.Read())
                 {
@@ -151,7 +151,7 @@ namespace Employee_Leave
                     dtUend.Value = DateTime.ParseExact(reader2.GetString(3), "dd/MM/yyyy", null);
                     cbType.Text = reader2.GetString(4);
                 }
-                getCon.Close();
+                db.Close();
             }
             catch (Exception ex)
             {
@@ -162,8 +162,8 @@ namespace Employee_Leave
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            MySqlConnection updateCon = new MySqlConnection(conString);
-            MySqlCommand com =  updateCon.CreateCommand();
+            
+            MySqlCommand com =  db.CreateCommand();
             com.CommandText = "UPDATE leavedatabase SET Start_Date = @start, End_Date = @end, Leave_Type = @type WHERE Leave_ID = @lid";
 
             com.Parameters.AddWithValue("@start", dtUstart.Value.ToShortDateString());
@@ -173,10 +173,10 @@ namespace Employee_Leave
 
             try
             {
-                updateCon.Open();
+                db.Open();
                 com.ExecuteNonQuery();
                 MessageBox.Show("Update Successfull!", "Message", MessageBoxButtons.OK);
-                updateCon.Close();
+                db.Close();
             }
             catch (Exception ex)
             {

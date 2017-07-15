@@ -105,7 +105,7 @@ namespace Payroll_standalone
             using (db)
             {
                 
-                var query = "SELECT `ID`, `First Name`, `Last Name` FROM employeedatabase";
+                var query = "SELECT `ID`, `First_Name`, `Last_Name` FROM employeedatabase";
                 using (var command = new MySqlCommand(query, db))
                 {
                     db.Open();
@@ -115,7 +115,7 @@ namespace Payroll_standalone
                         {
                             DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
                             row.Cells[0].Value = reader.GetString("ID");
-                            row.Cells[1].Value = reader.GetString("First name") + " " + reader.GetString("Last name");
+                            row.Cells[1].Value = reader.GetString("First_Name") + " " + reader.GetString("Last_Name");
                             dataGridView1.Rows.Add(row);
                         }
                     }
@@ -141,7 +141,7 @@ namespace Payroll_standalone
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
-                            tbxEmpName.Text = reader.GetString("First name") + " " + reader.GetString("Last name");
+                            tbxEmpName.Text = reader.GetString("First_Name") + " " + reader.GetString("Last_Name");
                         }
                     }
                     db.Close();

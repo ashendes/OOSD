@@ -77,10 +77,10 @@
       <DependentUpon>Amendment Rates.cs</DependentUpon>
     </Compile>
     <Compile Include="AttendanceEntry.cs" />
-    <Compile Include="CrystalReport1.cs">
+    <Compile Include="Payslip1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <DependentUpon>Payslip.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DailyAttendanceEntryForm.cs">
@@ -102,11 +102,11 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Payslip.cs">
+    <Compile Include="PayslipViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Payslip.Designer.cs">
-      <DependentUpon>Payslip.cs</DependentUpon>
+    <Compile Include="PayslipViewer.Designer.cs">
+      <DependentUpon>PayslipViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Salary Amendment.cs">
       <SubType>Form</SubType>
@@ -132,9 +132,9 @@
     <EmbeddedResource Include="Amendment Rates.resx">
       <DependentUpon>Amendment Rates.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport1.rpt">
+    <EmbeddedResource Include="Payslip.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+      <LastGenOutput>Payslip1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DailyAttendanceEntryForm.resx">
       <DependentUpon>DailyAttendanceEntryForm.cs</DependentUpon>
@@ -145,8 +145,8 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Payslip.resx">
-      <DependentUpon>Payslip.cs</DependentUpon>
+    <EmbeddedResource Include="PayslipViewer.resx">
+      <DependentUpon>PayslipViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salary Amendment.resx">
       <DependentUpon>Salary Amendment.cs</DependentUpon>

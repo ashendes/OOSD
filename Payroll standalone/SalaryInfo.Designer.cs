@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbxEmpID = new System.Windows.Forms.ComboBox();
             this.tbxDesignation = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tbxDept = new System.Windows.Forms.TextBox();
@@ -74,7 +75,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.cbxEmpID = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -128,6 +128,16 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee Details";
+            // 
+            // cbxEmpID
+            // 
+            this.cbxEmpID.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.cbxEmpID.FormattingEnabled = true;
+            this.cbxEmpID.Location = new System.Drawing.Point(36, 87);
+            this.cbxEmpID.Name = "cbxEmpID";
+            this.cbxEmpID.Size = new System.Drawing.Size(498, 41);
+            this.cbxEmpID.TabIndex = 9;
+            this.cbxEmpID.SelectedIndexChanged += new System.EventHandler(this.cbxEmpID_SelectedIndexChanged);
             // 
             // tbxDesignation
             // 
@@ -307,6 +317,7 @@
             this.btnViewPS.TabIndex = 38;
             this.btnViewPS.Text = "View Payslip";
             this.btnViewPS.UseVisualStyleBackColor = true;
+            this.btnViewPS.Click += new System.EventHandler(this.btnViewPS_Click);
             // 
             // tbxOTPay
             // 
@@ -577,16 +588,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // cbxEmpID
-            // 
-            this.cbxEmpID.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cbxEmpID.FormattingEnabled = true;
-            this.cbxEmpID.Location = new System.Drawing.Point(36, 87);
-            this.cbxEmpID.Name = "cbxEmpID";
-            this.cbxEmpID.Size = new System.Drawing.Size(498, 41);
-            this.cbxEmpID.TabIndex = 9;
-            this.cbxEmpID.SelectedIndexChanged += new System.EventHandler(this.cbxEmpID_SelectedIndexChanged);
             // 
             // SalaryInfo
             // 

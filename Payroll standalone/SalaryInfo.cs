@@ -149,11 +149,11 @@ namespace Payroll_standalone
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
-                            tbxEmpName.Text = reader.GetString("First name") + " " + reader.GetString("Last name");
+                            tbxEmpName.Text = reader.GetString("First_Name") + " " + reader.GetString("Last_Name");
                             tbxDept.Text = reader.GetString("Department");
                             tbxDesignation.Text = reader.GetString("Designation");
-                            tbxBasicSal.Text = reader.GetString("Basic Salary");
-                            tbxArrears.Text = reader.GetString("Arrears");
+                            tbxBasicSal.Text = Convert.ToDouble(reader.GetString("Basic_Salary")).ToString("0.##");
+                            tbxArrears.Text = Convert.ToDouble(reader.GetString("Arrears")).ToString("0.##");
                         }
                         db.Close();
                     }
@@ -294,19 +294,19 @@ namespace Payroll_standalone
 
         private void calculateSalary()
         {
-            double GSal = Convert.ToDouble(tbxBasicSal.Text) + Convert.ToDouble(tbxAllowances.Text) + Convert.ToDouble(tbxArrears.Text) + Convert.ToDouble(tbxBonuses.Text);
+            double GSal = Math.Round((Convert.ToDouble(tbxBasicSal.Text) + Convert.ToDouble(tbxAllowances.Text) + Convert.ToDouble(tbxArrears.Text) + Convert.ToDouble(tbxBonuses.Text)),2,MidpointRounding.AwayFromZero);
             double OTFactor = (Convert.ToDouble(tbxBasicSal.Text) / 200) * (OT_Rate / 100);
-            double OTPay = Convert.ToDouble(tbxOTHours.Text) * OTFactor;
-            double EPF = GSal * (EPF_Rate / 100);
-            double ETF = GSal * (ETF_Rate / 100);
-            double NetSal = GSal + OTPay - EPF;
+            double OTPay = Math.Round((Convert.ToDouble(tbxOTHours.Text) * OTFactor),2, MidpointRounding.AwayFromZero);
+            double EPF = Math.Round((GSal * (EPF_Rate / 100)),2, MidpointRounding.AwayFromZero);
+            double ETF = Math.Round((GSal * (ETF_Rate / 100)),2, MidpointRounding.AwayFromZero);
+            double NetSal = Math.Round((GSal + OTPay - EPF),2, MidpointRounding.AwayFromZero);
 
-            tbxGSal.Text = GSal.ToString();
-            tbxOTPay.Text = OTPay.ToString();
-            tbxEPF.Text = EPF.ToString();
-            tbxETF.Text = ETF.ToString();
-            tbxNetSal.Text = NetSal.ToString();
-            currentRecord = new SalaryRecord(tbxPSID.Text, cbxEmpID.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), month.Value.Month.ToString(), year.Text, tbxBasicSal.Text, tbxWHours.Text, tbxOTHours.Text, tbxAllowances.Text, tbxAdvances.Text, tbxAdvances.Text, tbxArrears.Text, tbxGSal.Text, tbxOTPay.Text, tbxEPF.Text, tbxETF.Text, tbxNetSal.Text);
+            tbxGSal.Text = GSal.ToString("0.##");
+            tbxOTPay.Text = OTPay.ToString("0.##");
+            tbxEPF.Text = EPF.ToString("0.##");
+            tbxETF.Text = ETF.ToString("0.##");
+            tbxNetSal.Text = NetSal.ToString("0.##");
+            currentRecord = new SalaryRecord(tbxPSID.Text, cbxEmpID.Text,tbxEmpName.Text, tbxDesignation.Text, tbxDept.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), month.Value.Month.ToString(), year.Text, tbxBasicSal.Text, tbxWHours.Text, tbxOTHours.Text, tbxAllowances.Text, tbxAdvances.Text, tbxAdvances.Text, tbxArrears.Text, tbxGSal.Text, tbxOTPay.Text, tbxEPF.Text, tbxETF.Text, tbxNetSal.Text);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -316,13 +316,10 @@ namespace Payroll_standalone
             {
                 using (db)
                 {
-                    //var query = "INSERT INTO salaryinfo (`EmpID`, `Date_of_Calculation`, `Month`, `Year`, `Basic Salary`, `Total hours worked`, `Total OT hours`, `Total Allowances`, `Total Advances`, `Total bonuses`, `Arrears`, `GrossSalary`, `OTPay`, `EPF`, `ETF`, `NetSalary`) VALUES (@EmpID,@DateOfCalculation,@month,@year,@BasicSal,@totalhours,@totalOThours, @totalAllowances,@totalAdvances,@totalBonuses,@arrears,@GSal,@OTPay,@EPF,@ETF,@NetSal)";
-                    //var query = "INSERT INTO `salaryinfo`(EmpID, `Date_of_Calculation`, `Year`, `Basic Salary`, `Total hours worked`, `Total OT hours`, `Total Allowances`, `Total Advances`, `Total bonuses`, `Arrears`, `GrossSalary`, `OTPay`, `EPF`, `ETF`, `NetSalary`) VALUES(" +cbxEmpID.Text+ ",`" + DateTime.Now.Date.ToString("yyyy-MM-dd") +"`," + year.Text + "," + tbxBasicSal.Text + ",`" + tbxWHours.Text + "`,`" + tbxOTHours.Text + "`,`" + tbxAllowances.Text + "`,`" + tbxAdvances.Text + "`,`" + tbxBonuses.Text + "`,`" + tbxArrears.Text + "`,`" + tbxGSal.Text + "`,`" + tbxOTPay.Text + "`,`" + tbxEPF.Text + "`,`" + tbxETF.Text + "`,`" + tbxNetSal.Text + "`)";
                     var query = "INSERT INTO salaryinfo (`EmpID`, `Date_of_Calculation`, `Month`, `Year`, `Basic Salary`, `Total hours worked`, `Total OT hours`, `Total Allowances`, `Total Advances`, `Total bonuses`, `Arrears`,`GrossSalary`, `OTPay`, `EPF`, `ETF`, `NetSalary`) VALUES (@EmpID,@DateOfCalculation,@month,@year,@BasicSal,@totalhours,@totalOThours, @totalAllowances,@totalAdvances,@totalBonuses,@arrears,@GSal,@OTPay,@EPF,@ETF,@NetSal)";
                     using (var command = new MySqlCommand(query, db))
                     {
-                        db.Open();
-                        //command.Parameters.AddWithValue("@PayslipID", tbxPSID.Text);
+                        db.Open();                        
                         command.Parameters.AddWithValue("@EmpID", cbxEmpID.Text);
                         command.Parameters.AddWithValue("@DateOfCalculation", DateTime.Now.Date.ToString("yyyy-MM-dd"));
                         command.Parameters.AddWithValue("@month", month.Value.Month);
@@ -333,12 +330,7 @@ namespace Payroll_standalone
                         command.Parameters.AddWithValue("@totalAllowances", tbxAllowances.Text);
                         command.Parameters.AddWithValue("@totalAdvances", tbxAdvances.Text);
                         command.Parameters.AddWithValue("@totalBonuses", tbxBonuses.Text);                        
-                        command.Parameters.AddWithValue("@arrears", tbxArrears.Text);
-                        /*command.Parameters.AddWithValue("@GSal,", tbxGSal.Text);
-                        command.Parameters.AddWithValue("@OTPay,", tbxOTPay.Text);
-                        command.Parameters.AddWithValue("@EPF", tbxEPF.Text);
-                        command.Parameters.AddWithValue("@ETF", tbxETF.Text);
-                        command.Parameters.AddWithValue("@NetSal", tbxNetSal.Text);*/
+                        command.Parameters.AddWithValue("@arrears", tbxArrears.Text);                       
                         command.Parameters.Add("@GSal", MySqlDbType.Double);
                         command.Parameters["@GSal"].Value = tbxGSal.Text;
                         command.Parameters.Add("@OTPay", MySqlDbType.Double);
@@ -364,5 +356,14 @@ namespace Payroll_standalone
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnViewPS_Click(object sender, EventArgs e)
+        {
+            var form = new PayslipViewer();
+            form.showReport(currentRecord);
+            form.Show();
+        }
+
+       
     }
 }

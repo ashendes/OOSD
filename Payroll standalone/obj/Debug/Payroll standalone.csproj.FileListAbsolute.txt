@@ -41,7 +41,6 @@ C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalo
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll standalone.csproj.GenerateResource.Cache
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Amendment_Rates.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Login.resources
-C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Payslip.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.ReportSource.dll
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.Shared.dll
@@ -61,3 +60,4 @@ C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Employee_Leave.Leave.resources
+C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.PayslipViewer.resources
