@@ -42,12 +42,19 @@ namespace Oosd_project
         //search button
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM softwaredb.resource_inventory where name like'" + textBox1.Text+"%'", con);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            con.Close();
+            if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                con.Open();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM softwaredb.resource_inventory where name like'" + textBox1.Text + "%'", con);
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                con.Close();
+            }
+            else
+            {
+                MessageBox.Show("Write resource name to search");
+            }
         }
 
         //display button
@@ -61,30 +68,6 @@ namespace Oosd_project
         {
             this.Hide();
             Resource_Control_Form.Current.ShowDialog();
-        }
-
-        //log out
-        private void button4_Click(object sender, EventArgs e)
-        {
-            DialogResult result;
-
-            try
-            {
-                result = MessageBox.Show("Are you sure to Quit?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else if (result == DialogResult.No)
-                {
-                    this.Show();
-                }
-
-            }
-            catch
-            {
-                Application.Exit();
-            }
         }
 
         //form load
@@ -106,7 +89,7 @@ namespace Oosd_project
         {
             if (selected == true)
             {
-                Show_Resource_Details NR = new Show_Resource_Details(RI.id, RI.name, RI.quantity, RI.supplier_id);
+                Show_Resource_Details NR = new Show_Resource_Details(RI.id, RI.name, RI.quantity, RI.supplier_id,RI.reorder_level);
                 NR.ShowDialog();
                 selected = false;
             }
@@ -119,11 +102,11 @@ namespace Oosd_project
         //method to set inventory values of text boxes
         public void setInventoryDetails(DataGridViewRow row)
         {
-            RI.id = row.Cells[0].Value.ToString();
+            RI.id = int.Parse(row.Cells[0].Value.ToString());
             RI.name = row.Cells[1].Value.ToString();
-            RI.quantity = row.Cells[2].Value.ToString();
-            RI.supplier_id = row.Cells[3].Value.ToString();
-
+            RI.quantity = int.Parse(row.Cells[2].Value.ToString());
+            RI.supplier_id = int.Parse(row.Cells[3].Value.ToString());
+            RI.reorder_level = int.Parse(row.Cells[4].Value.ToString());
         }
 
         //select row of datagrid view

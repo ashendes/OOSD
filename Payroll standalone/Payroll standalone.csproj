@@ -89,18 +89,11 @@
     <Compile Include="DailyAttendanceEntryForm.Designer.cs">
       <DependentUpon>DailyAttendanceEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBConnection.cs" />
     <Compile Include="Leave.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Leave.designer.cs">
       <DependentUpon>Leave.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="PayslipViewer.cs">
       <SubType>Form</SubType>
@@ -123,12 +116,6 @@
       <DependentUpon>SalaryInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="SalaryRecord.cs" />
-    <Compile Include="Switchboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Switchboard.Designer.cs">
-      <DependentUpon>Switchboard.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewPayrollInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,9 +135,6 @@
     <EmbeddedResource Include="Leave.resx">
       <DependentUpon>Leave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PayslipViewer.resx">
       <DependentUpon>PayslipViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,9 +152,6 @@
     </Compile>
     <EmbeddedResource Include="SalaryInfo.resx">
       <DependentUpon>SalaryInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Switchboard.resx">
-      <DependentUpon>Switchboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPayrollInfo.resx">
       <DependentUpon>ViewPayrollInfo.cs</DependentUpon>

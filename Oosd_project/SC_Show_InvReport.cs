@@ -43,12 +43,19 @@ namespace Oosd_project
         //search button
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM softwaredb.stock_inventory where product_name like '" + textBox1.Text+"%'", con);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            con.Close();
+            if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                con.Open();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM softwaredb.stock_inventory where product_name like '" + textBox1.Text + "%'", con);
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                con.Close();
+            }
+            else
+            {
+                MessageBox.Show("Write product name to search");
+            }
         }
 
         //back button
@@ -63,30 +70,6 @@ namespace Oosd_project
         private void button2_Click(object sender, EventArgs e)
         {
             disp_data();
-        }
-
-        //log out button
-        private void button4_Click(object sender, EventArgs e)
-        {
-            DialogResult result;
-
-            try
-            {
-                result = MessageBox.Show("Are you sure to Quit?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else if (result == DialogResult.No)
-                {
-                    this.Show();
-                }
-
-            }
-            catch
-            {
-                Application.Exit();
-            }
         }
 
         //load form
@@ -110,12 +93,12 @@ namespace Oosd_project
         //set inventory values
         public void setInventoryDetails(DataGridViewRow row)
         {
-            StockI.product_id = row.Cells[0].Value.ToString();
+            StockI.product_id = int.Parse(row.Cells[0].Value.ToString());
             StockI.product_name = row.Cells[1].Value.ToString();
             StockI.dimensions = row.Cells[2].Value.ToString();
-            StockI.dollar_price = row.Cells[3].Value.ToString();
-            StockI.euro_price = row.Cells[4].Value.ToString();
-            StockI.quantity = row.Cells[5].Value.ToString();
+            StockI.dollar_price = float.Parse(row.Cells[3].Value.ToString());
+            StockI.euro_price = float.Parse(row.Cells[4].Value.ToString());
+            StockI.quantity = int.Parse(row.Cells[5].Value.ToString());
             MemoryStream ms = new MemoryStream((byte[])row.Cells[6].Value);
             StockI.product_image = Image.FromStream(ms);
         }

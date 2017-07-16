@@ -8,9 +8,10 @@ namespace Oosd_project
 {
     class Resoure_Inventory
     {
-        public string id;
+        public int id;
         public string name;
-        public string quantity;
-        public string supplier_id;
+        public int quantity;
+        public int supplier_id;
+        public int reorder_level;
     }
 }

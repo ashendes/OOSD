@@ -14,10 +14,10 @@ namespace Payroll_standalone
     public partial class ViewPayrollInfo : Form
     {
         MySqlConnection db;
-        public ViewPayrollInfo()
+        public ViewPayrollInfo(MySqlConnection db)
         {
             InitializeComponent();
-            db = DBConnection.getDBConnection();
+            this.db = db;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

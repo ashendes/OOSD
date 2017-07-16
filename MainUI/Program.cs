@@ -16,7 +16,7 @@ namespace MainUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainSwitchboard());
+            Application.Run(Login.getLoginForm());
         }
     }
 }

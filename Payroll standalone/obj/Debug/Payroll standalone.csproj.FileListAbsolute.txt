@@ -37,10 +37,8 @@ C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalo
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.SalaryAmendmentForm.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Properties.Resources.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.SalaryInfo.resources
-C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Switchboard.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll standalone.csproj.GenerateResource.Cache
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Amendment_Rates.resources
-C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\obj\Debug\Payroll_standalone.Login.resources
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.ReportSource.dll
 C:\Users\ASUS\Documents\Repos\OOSD\Payroll standalone\bin\Debug\CrystalDecisions.Shared.dll

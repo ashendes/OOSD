@@ -20,9 +20,10 @@ namespace Payroll_standalone
         double OT_Rate;
         SalaryRecord currentRecord;
 
-        public SalaryInfo()
+        public SalaryInfo(MySqlConnection db)
         {
             InitializeComponent();
+            this.db = db;
         }
 
         private void onLoad()
@@ -38,7 +39,7 @@ namespace Payroll_standalone
 
         private void SalaryInfo_Load(object sender, EventArgs e)
         {
-            db = DBConnection.getDBConnection();
+            
             loadTocbxEmpID();
             onLoad();
         }

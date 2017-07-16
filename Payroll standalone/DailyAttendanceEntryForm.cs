@@ -18,15 +18,16 @@ namespace Payroll_standalone
         DateTimePicker picker;
         
 
-        public DailyAttendanceEntryForm()
+        public DailyAttendanceEntryForm(MySqlConnection db)
         {
             InitializeComponent();
+            this.db = db;
             
         }
 
         private void DailyAttendanceEntryForm_Load(object sender, EventArgs e)
         {
-            db = DBConnection.getDBConnection();
+            
             dateTimePicker2.Value = DateTime.Now;
             loadTocbxEmpID();
             loadToDataTable();

@@ -9,15 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Payroll_standalone
+namespace MainUI
 {
     public partial class Login : Form
     {
-        MySqlConnection dbconnection = new MySqlConnection("datasource=localhost;port=3306;username=root;password=");
+        MySqlConnection db;
         int i;
-        public Login()
+       
+
+        private static Login loginform = null;
+
+        public static Login getLoginForm()
+        {
+            if (loginform == null)
+            {
+                loginform = new Login();
+                return loginform;
+            }
+            
+            return loginform;
+        }
+        private Login()
         {
             InitializeComponent();
+            DBConnection.setupDBConnection();
+            db = DBConnection.getDBConnection();
         }
 
         private void tbxUsername_TextChanged(object sender, EventArgs e)
@@ -37,7 +53,7 @@ namespace Payroll_standalone
         {
             if (e.KeyChar == (char)13)
             {
-                btnLogin.Focus();
+                btnLogin_Click(sender, e);
             }
         }
 
@@ -61,12 +77,11 @@ namespace Payroll_standalone
                 try
                 {
                     i = 0;
-                    dbconnection.Open();
-                    MySqlCommand command = dbconnection.CreateCommand();
+                    
+                    db.Open();
+                    MySqlCommand command = db.CreateCommand();
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "SELECT * from user list where username ='" + tbxUsername.Text + "' and password = '" + tbxPassword.Text + "'";
-                    //command.ExecuteNonQuery();
-                    //string command = "SELECT * from user list where username ='" + tbxUsername.Text + "' and password = '" + tbxPassword.Text + "'";
+                    command.CommandText = "SELECT * FROM `user list` WHERE user ='" + tbxUsername.Text + "' and password = '" + tbxPassword.Text + "'";
                     DataTable dt = new DataTable();
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                     adapter.Fill(dt);
@@ -74,25 +89,32 @@ namespace Payroll_standalone
 
                     if (i != 0)
                     {
-                        dbconnection.Close();
+                        db.Close();
+                                               
                         this.Hide();
-                        Switchboard next = new Switchboard();
-                        next.Show();
-                        this.Close();
+                        var switchboard = new MainSwitchboard(tbxUsername.Text);
+                        switchboard.ShowDialog();
+                        
+
                     }
                     else
                     {
-                        dbconnection.Close();
+                        db.Close();
                         MessageBox.Show("Invalid username or password", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         tbxUsername.Focus();
+                        tbxPassword.Clear();
                     }
                 }
-                catch (Exception ex)
+                /*catch (Exception ex)
                 {
 
                     //logger.ErrorException("Error accessing database", ex);
-                    MessageBox.Show("Error accessing database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbxUsername.Clear();
+                    tbxPassword.Clear();
+                    tbxUsername.Focus();
+                }*/
+                finally {  }
             }
         }
 

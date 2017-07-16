@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Payroll_standalone
+namespace MainUI
 {
     
     public class DBConnection
@@ -14,7 +14,7 @@ namespace Payroll_standalone
 
         public static void setupDBConnection()
         {
-            for(int i=0; i<5; i++)
+            for(int i=0; i<10; i++)
             {
                 connectionPool.Enqueue(new MySqlConnection("datasource=localhost;port=3306;database=softwaredb;username=root;password="));
             }

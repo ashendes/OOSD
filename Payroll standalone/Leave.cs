@@ -15,12 +15,12 @@ namespace Payroll_standalone
     public partial class Leave : Form
     {
         MySqlConnection db;
-        public Leave()
+        public Leave(MySqlConnection db)
         {
             InitializeComponent();
             btnAdd.Enabled = false;
             btnUpdate.Enabled = false;
-            db = DBConnection.getDBConnection();
+            this.db = db;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

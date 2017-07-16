@@ -16,39 +16,39 @@ namespace MainUI
 {
     public partial class MainSwitchboard : Form
     {
-        string[] images = { "hotwheels.jpg", "stuffed.jpg", "kid.jpg","puzzle.jpg","block.jpg" };
+        string[] images = { "hotwheels.jpg", "stuffed.jpg", "kid.jpg", "puzzle.jpg", "block.jpg" };
         int i = 0;
-        public MainSwitchboard()
-        {            
+        public MainSwitchboard(string user)
+        {
             InitializeComponent();
-            DBConnection.setupDBConnection();            
+            username.Text = user;
         }
 
         private void btnDAE_Click(object sender, EventArgs e)
         {
-            var dailyForm = new DailyAttendanceEntryForm();
+            var dailyForm = new DailyAttendanceEntryForm(DBConnection.getDBConnection());
             dailyForm.ShowDialog();
         }
 
         private void btnSA_Click(object sender, EventArgs e)
         {
-            var salaryForm = new SalaryAmendmentForm();
+            var salaryForm = new SalaryAmendmentForm(DBConnection.getDBConnection());
             salaryForm.ShowDialog();
         }
 
         private void btnEditRates_Click(object sender, EventArgs e)
         {
-            var rateForm = new Amendment_Rates();
+            var rateForm = new Amendment_Rates(DBConnection.getDBConnection());
             rateForm.ShowDialog();
         }
 
         private void btnSalCalc_Click(object sender, EventArgs e)
         {
-            var salCalForm = new SalaryInfo();
+            var salCalForm = new SalaryInfo(DBConnection.getDBConnection());
             salCalForm.ShowDialog();
         }
 
-        
+
 
         private void mainButton_Click(object sender, EventArgs e)
         {
@@ -57,17 +57,20 @@ namespace MainUI
 
         private void MainSwitchboard_Load(object sender, EventArgs e)
         {
-            
             pbSlide.Image = Image.FromFile("C:/Users/ASUS/Documents/Repos/OOSD/MainUI/Images/" + images[0]);
             label2.Text = DateTime.Now.Date.ToString("dd-MMMM-yyyy");
+            /*lbldaysleft.Parent = payrolltimeleft;
+            label1.Parent = payrolltimeleft;
+            lbldaysleft.BringToFront();
+            label1.BringToFront();*/
             payrolltimeleft.Minimum = 0;
             payrolltimeleft.Maximum = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
             payrolltimeleft.Value = DateTime.Now.Day;
-
-
+            lbldaysleft.Text = Convert.ToString(DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - DateTime.Now.Day) + " days";
+            lbldaysleft.Visible = true;
         }
 
-      
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -112,13 +115,13 @@ namespace MainUI
 
         private void btnLeave_Click(object sender, EventArgs e)
         {
-            var leaveForm = new Leave();
+            var leaveForm = new Leave(DBConnection.getDBConnection());
             leaveForm.ShowDialog();
         }
 
         private void btnViewPayroll_Click(object sender, EventArgs e)
         {
-            var payForm = new ViewPayrollInfo();
+            var payForm = new ViewPayrollInfo(DBConnection.getDBConnection());
             payForm.ShowDialog();
         }
 
@@ -148,9 +151,36 @@ namespace MainUI
                 i = 0;
             }
             timer2.Enabled = true;
-            
+
             pbSlide.Image = Image.FromFile("C:/Users/ASUS/Documents/Repos/OOSD/MainUI/Images/" + images[i]);
             
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DisposeAllButThis(this);
+                Hide();
+                Close();
+            }
+            finally
+            {
+                Login.getLoginForm().Show();
+            }
+
+        }
+        public void DisposeAllButThis(Form form)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if(frm != form)
+                {
+                    frm.Dispose();
+                    frm.Close();
+                }                
+            }
         }
     }
 }

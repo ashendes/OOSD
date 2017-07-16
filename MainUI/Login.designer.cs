@@ -1,4 +1,4 @@
-﻿namespace Payroll_standalone
+﻿namespace MainUI
 {
     partial class Login
     {
@@ -41,16 +41,16 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(155, 134);
+            this.pictureBox1.Location = new System.Drawing.Point(69, 101);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(275, 160);
+            this.pictureBox1.Size = new System.Drawing.Size(362, 192);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(829, 301);
+            this.btnLogin.Location = new System.Drawing.Point(829, 293);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(187, 55);
             this.btnLogin.TabIndex = 2;
@@ -60,15 +60,16 @@
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Location = new System.Drawing.Point(621, 223);
+            this.tbxPassword.Location = new System.Drawing.Point(621, 219);
             this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(395, 31);
             this.tbxPassword.TabIndex = 1;
             this.tbxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxPassword_KeyPress);
             // 
             // tbxUsername
             // 
-            this.tbxUsername.Location = new System.Drawing.Point(621, 138);
+            this.tbxUsername.Location = new System.Drawing.Point(621, 134);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(395, 31);
             this.tbxUsername.TabIndex = 0;
@@ -95,19 +96,20 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Username";
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 491);
+            this.ClientSize = new System.Drawing.Size(1101, 418);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxPassword);
             this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Artiwood International (Pvt) Ltd.";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

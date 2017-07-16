@@ -8,10 +8,10 @@ namespace Oosd_project
 {
     class Supplier
     {
-        public string supplier_id;
+        public int supplier_id;
         public string name;
         public string email;
-        public string phone_number;
+        public int phone_number;
         public string address;
     }
 }

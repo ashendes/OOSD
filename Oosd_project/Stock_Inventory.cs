@@ -9,12 +9,12 @@ namespace Oosd_project
 {
     class Stock_Inventory
     {
-        public string product_id;
+        public int product_id;
         public string product_name;
         public string dimensions;
-        public string dollar_price;
-        public string euro_price;
-        public string quantity;
+        public float dollar_price;
+        public float euro_price;
+        public int quantity;
         public Image product_image;
     }
 }

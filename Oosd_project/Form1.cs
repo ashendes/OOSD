@@ -37,30 +37,6 @@ namespace Oosd_project
             s1.Show();
         }
 
-        //Log out button
-        private void button4_Click(object sender, EventArgs e)
-        {
-            DialogResult result;
-
-            try
-            {
-                result = MessageBox.Show("Are you sure to Quit?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else if (result == DialogResult.No)
-                {
-                    this.Show();
-                }
-
-            }
-            catch
-            {
-                Application.Exit();
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e){}
     }
 }

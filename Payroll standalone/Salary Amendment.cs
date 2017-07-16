@@ -18,10 +18,10 @@ namespace Payroll_standalone
         MySqlConnection db;
         double amount;
         int typeIndex;
-        public SalaryAmendmentForm()
+        public SalaryAmendmentForm(MySqlConnection db)
         {
             InitializeComponent();
-            db = DBConnection.getDBConnection();
+            this.db = db;
         }
 
         private void tbxAmount_Leave(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace Payroll_standalone
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
-                            tbxEmpName.Text = reader.GetString("First name") + " " + reader.GetString("Last name");
+                            tbxEmpName.Text = reader.GetString("First_name") + " " + reader.GetString("Last_name");
                         }
                     }
                     db.Close();

@@ -61,35 +61,18 @@ namespace Oosd_project
         //search button
         private void button7_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM softwaredb.resource_inventory where name like '" + textBox1.Text+"%'", con);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            con.Close();
-        }
-
-        //log out button
-        private void button4_Click(object sender, EventArgs e)
-        {
-            DialogResult result;
-
-            try
+            if (!string.IsNullOrEmpty(textBox1.Text))
             {
-                result = MessageBox.Show("Are you sure to Quit?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else if (result == DialogResult.No)
-                {
-                    this.Show();
-                }
-
+                con.Open();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM softwaredb.resource_inventory where name like '" + textBox1.Text + "%'", con);
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                con.Close();
             }
-            catch
+            else
             {
-                Application.Exit();
+                MessageBox.Show("write product name to search");
             }
         }
 
@@ -97,7 +80,7 @@ namespace Oosd_project
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            New_Resource s1 = new New_Resource(RI.id,RI.name,RI.quantity,RI.supplier_id);
+            New_Resource s1 = new New_Resource(RI.id,RI.name,RI.quantity,RI.supplier_id,RI.reorder_level);
             s1.txtBtn("Add");
             s1.Show();
         }
@@ -118,7 +101,7 @@ namespace Oosd_project
             if (selected == true)
             {
                 this.Hide();
-                New_Resource NR = new New_Resource(RI.id, RI.name, RI.quantity, RI.supplier_id);
+                New_Resource NR = new New_Resource(RI.id, RI.name, RI.quantity, RI.supplier_id, RI.reorder_level);
                 NR.txtBtn("Edit");
                 NR.ShowDialog();
                 selected = false;
@@ -143,11 +126,11 @@ namespace Oosd_project
         //set inventory values to text boxes
         public void setInventoryDetails(DataGridViewRow row)
         {
-            RI.id = row.Cells[0].Value.ToString();
+            RI.id = int.Parse(row.Cells[0].Value.ToString());
             RI.name = row.Cells[1].Value.ToString();
-            RI.quantity = row.Cells[2].Value.ToString();
-            RI.supplier_id = row.Cells[3].Value.ToString();
-
+            RI.quantity = int.Parse(row.Cells[2].Value.ToString());
+            RI.supplier_id = int.Parse(row.Cells[3].Value.ToString());
+            RI.reorder_level = int.Parse(row.Cells[4].Value.ToString());
         }
 
         //view resource detail page for each resource
@@ -155,7 +138,7 @@ namespace Oosd_project
         {
             if (selected == true)
             {
-                Show_Resource_Details NR = new Show_Resource_Details(RI.id, RI.name, RI.quantity, RI.supplier_id);
+                Show_Resource_Details NR = new Show_Resource_Details(RI.id, RI.name, RI.quantity, RI.supplier_id,RI.reorder_level);
                 NR.ShowDialog();
                 selected = false;
             }

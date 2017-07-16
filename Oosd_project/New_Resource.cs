@@ -16,12 +16,14 @@ namespace Oosd_project
         public static New_Resource Current;
         MySqlConnection con = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;database=softwaredb");
 
-        public string id;
+        public int id;
         public string name;
-        public string quantity;
-        public string supplier_id;
+        public int quantity;
+        public int supplier_id;
+        public int reorder_level;
+        bool notify;
 
-        public New_Resource(string id, string name, string quantity, string supplier_id)
+        public New_Resource(int id, string name, int quantity, int supplier_id,int reorder_level)
         {
             InitializeComponent();
             Fillcombo();
@@ -29,6 +31,7 @@ namespace Oosd_project
             this.name = name;
             this.quantity = quantity;
             this.supplier_id = supplier_id;
+            this.reorder_level = reorder_level;
         }
 
         //cancel button
@@ -36,6 +39,7 @@ namespace Oosd_project
         {
             this.Hide();
             RC_UpdateReport RC = new RC_UpdateReport();
+            RC.Show();
         }
 
         //method to set combo box values
@@ -64,28 +68,37 @@ namespace Oosd_project
         //Add and Edit button
         private void button2_Click(object sender, EventArgs e)
         {
+            notify= false;
+            int i;
             if (button2.Text == "Add")
             {
                 DialogResult result;
 
                 try
                 {
-                    result = MessageBox.Show("Do you need to update?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    result = MessageBox.Show("Do you need to add?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
                     {
-                        if ((!string.IsNullOrEmpty(textBox1.Text)) && (!string.IsNullOrEmpty(textBox2.Text)) && (!string.IsNullOrEmpty(textBox3.Text)) && (!string.IsNullOrEmpty(comboBox1.Text)))
+                        
+                        if ((!string.IsNullOrEmpty(textBox1.Text)) && (!string.IsNullOrEmpty(textBox2.Text)) && (!string.IsNullOrEmpty(textBox3.Text)) && (!string.IsNullOrEmpty(comboBox1.Text)) && (!string.IsNullOrEmpty(textBox4.Text)) && (int.TryParse(textBox3.Text, out i)) && (int.TryParse(textBox4.Text, out i)) && (!textBox2.Text.All(char.IsDigit)))
                         {
                             con.Open();
                             MySqlCommand cmd = con.CreateCommand();
                             cmd.CommandType = CommandType.Text;
-                            cmd.CommandText = "insert into resource_inventory values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + comboBox1.Text + "')";
+                            cmd.CommandText = "insert into resource_inventory values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + comboBox1.Text + "','" + textBox4.Text + "')";
                             cmd.ExecuteNonQuery();
                             con.Close();
                             MessageBox.Show("Record Successfully");
+                            if (!notify)
+                            {
+                                this.Hide();
+                                RC_UpdateReport RC = new RC_UpdateReport();
+                                RC.ShowDialog();
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Insert data correctly");
+                            MessageBox.Show("please insert data correctly");
                         }
                     }
                     else if (result == DialogResult.No)
@@ -102,40 +115,90 @@ namespace Oosd_project
             if (button2.Text == "Edit")
             {
                 DialogResult result;
-
-                MySqlConnection con3 = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;database=softwaredb");
-                MySqlCommand command = con3.CreateCommand();
-                command.CommandText = "UPDATE resource_inventory SET name=@name,quantity=@qun,supplier_id=@sid where id=@id";
-                command.Parameters.AddWithValue("@id", textBox1.Text);
-                command.Parameters.AddWithValue("@name", textBox2.Text);
-                command.Parameters.AddWithValue("@qun", textBox3.Text);
-                command.Parameters.AddWithValue("@sid", comboBox1.Text);
                 try
                 {
-                    result = MessageBox.Show("Do you need to update?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    result = MessageBox.Show("Do you need to add?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
                     {
-                        con3.Open();
-                        command.ExecuteNonQuery();
-                        con3.Close();
-                        this.Hide();
-                        RC_UpdateReport s1 = new RC_UpdateReport();
-                        s1.ShowDialog();
+                        if ((!string.IsNullOrEmpty(textBox1.Text)) && (!string.IsNullOrEmpty(textBox2.Text)) && (!string.IsNullOrEmpty(textBox3.Text)) && (!string.IsNullOrEmpty(comboBox1.Text)) && (!string.IsNullOrEmpty(textBox4.Text)) && (int.TryParse(textBox3.Text, out i)) && (int.TryParse(textBox4.Text, out i)) &&  (!textBox2.Text.All(char.IsDigit)))
+                        {
+                            if (int.Parse(textBox3.Text) >= int.Parse(textBox4.Text))
+                            {
+                                MySqlConnection con3 = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;database=softwaredb");
+                                MySqlCommand command = con3.CreateCommand();
+                                command.CommandText = "UPDATE resource_inventory SET name=@name,quantity=@qun,supplier_id=@sid,reorder_level=@rlevel where id=@id";
+                                command.Parameters.AddWithValue("@id", textBox1.Text);
+                                command.Parameters.AddWithValue("@name", textBox2.Text);
+                                command.Parameters.AddWithValue("@qun", textBox3.Text);
+                                command.Parameters.AddWithValue("@sid", comboBox1.Text);
+                                command.Parameters.AddWithValue("@rlevel", textBox4.Text);
+                                con3.Open();
+                                command.ExecuteNonQuery();
+                                con3.Close();
+                                if (!notify)
+                                {
+                                    this.Hide();
+                                    RC_UpdateReport RC = new RC_UpdateReport();
+                                    RC.ShowDialog();
+                                }
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Resource Quantity is below the minimum reorder level.Do you need to get information about the supplier?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                                if (result == DialogResult.Yes)
+                                {
+                                    try
+                                    {
+                                        string query2 = "SELECT *FROM suppliers_info WHERE suppliers_id = '" + comboBox1.Text + "'";
+                                        MySqlCommand command2 = new MySqlCommand(query2, con);
+                                        con.Open();
+                                        MySqlDataReader reader = command2.ExecuteReader();
+                                        while (reader.Read())
+                                        {
+                                            int id = int.Parse(reader.GetString(0));
+                                            string name = reader.GetString(1);
+                                            string email = reader.GetString(2);
+                                            int phnNumber = int.Parse(reader.GetString(3));
+                                            string address = reader.GetString(4);
+                                            Supplier_Detail_page supplier = new Supplier_Detail_page(id, name, email, phnNumber, address);
+                                            supplier.Show();
+                                            this.Hide();
+                                            notify = true;
+                                            supplier.txtBtn("Close");
+                                        }
+                                        con.Close();
+                                    }
+                                    catch(Exception ex)
+                                    {
+                                        MessageBox.Show(ex.Message);
+                                    }
+                                }
+                                else if (result == DialogResult.No)
+                                {
+                                    this.Show();
+                                }
+
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please insert data correctly");
+                        }
                     }
                     else if (result == DialogResult.No)
                     {
                         this.Show();
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message);
                 }
 
             }
-            this.Hide();
-            RC_UpdateReport RC = new RC_UpdateReport();
-            RC.ShowDialog();
+
         }
 
         //method to change text in add remove button
@@ -150,6 +213,7 @@ namespace Oosd_project
             textBox2.Text = "";
             textBox3.Text = "";
             comboBox1.Text = "";
+            textBox4.Text = "";
         }
 
         //Form load
@@ -178,10 +242,12 @@ namespace Oosd_project
         //method to set to default values
         public void setToDefault()
         {
-            textBox1.Text = id;
+            textBox1.Text = id.ToString();
             textBox2.Text = name;
-            textBox3.Text = quantity;
-            comboBox1.Text = supplier_id;
+            comboBox1.Text = supplier_id.ToString();
+            textBox3.Text = quantity.ToString();
+            textBox4.Text = reorder_level.ToString();
+
         }
 
         //clear button

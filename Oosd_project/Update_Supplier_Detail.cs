@@ -41,6 +41,7 @@ namespace Oosd_project
         //load supplier info page to add new supplier
         private void button8_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Supplier_info s1 = new Supplier_info(SI.supplier_id,SI.name,SI.email,SI.phone_number,SI.address);
             s1.btnText("Add");
             s1.Show();
@@ -55,12 +56,15 @@ namespace Oosd_project
         //search
         private void button11_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM softwaredb.suppliers_info where supplier_id like'" + textBox2.Text + "%'", con);
-            da.Fill(dt);
-            dataGridView2.DataSource = dt;
-            con.Close();
+            if (!string.IsNullOrEmpty(textBox2.Text))
+            {
+                con.Open();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM softwaredb.suppliers_info where supplier_id like'" + textBox2.Text + "%'", con);
+                da.Fill(dt);
+                dataGridView2.DataSource = dt;
+                con.Close();
+            }
         }
 
         //load form
@@ -76,35 +80,12 @@ namespace Oosd_project
             RC_UpdateReport.Current.ShowDialog();
         }
 
-        //log out button
-        private void button14_Click(object sender, EventArgs e)
-        {
-            DialogResult result;
-
-            try
-            {
-                result = MessageBox.Show("Are you sure to Quit?", "Exit", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else if (result == DialogResult.No)
-                {
-                    this.Show();
-                }
-
-            }
-            catch
-            {
-                Application.Exit();
-            }
-        }
-
         //load supplier info form to update supplier details
         private void button10_Click(object sender, EventArgs e)
         {
             if (selected == true)
             {
+                this.Hide();
                 Supplier_info s1 = new Supplier_info(SI.supplier_id, SI.name, SI.email, SI.phone_number, SI.address);
                 s1.btnText("Edit");
                 s1.Show();
@@ -119,10 +100,10 @@ namespace Oosd_project
         //set inventory value to supplier object
         public void setInventoryDetails(DataGridViewRow row)
         {
-            SI.supplier_id = row.Cells[0].Value.ToString();
+            SI.supplier_id = int.Parse(row.Cells[0].Value.ToString());
             SI.name = row.Cells[1].Value.ToString();
             SI.email = row.Cells[2].Value.ToString();
-            SI.phone_number = row.Cells[3].Value.ToString();
+            SI.phone_number = int.Parse(row.Cells[3].Value.ToString());
             SI.address = row.Cells[4].Value.ToString();
 
         }
@@ -145,6 +126,7 @@ namespace Oosd_project
             {
                 Supplier_Detail_page SInfo = new Supplier_Detail_page(SI.supplier_id, SI.name, SI.email, SI.phone_number, SI.address);
                 SInfo.Show();
+                SInfo.txtBtn("Cancel");
             }
             else
             {

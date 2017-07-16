@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnection.cs" />
     <Compile Include="MainSwitchboard.cs">
       <SubType>Form</SubType>
     </Compile>
