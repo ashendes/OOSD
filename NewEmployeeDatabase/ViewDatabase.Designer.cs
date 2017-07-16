@@ -44,18 +44,17 @@
             this.ColumnRes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnHire = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCloseView = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDatabase)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewDatabase
             // 
             this.dataGridViewDatabase.AllowUserToDeleteRows = false;
             this.dataGridViewDatabase.AllowUserToOrderColumns = true;
-            this.dataGridViewDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewDatabase.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridViewDatabase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDatabase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -73,11 +72,11 @@
             this.ColumnRes,
             this.ColumnHire,
             this.ColumnSalary});
-            this.dataGridViewDatabase.Location = new System.Drawing.Point(18, 106);
+            this.dataGridViewDatabase.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewDatabase.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridViewDatabase.Name = "dataGridViewDatabase";
             this.dataGridViewDatabase.RowTemplate.Height = 24;
-            this.dataGridViewDatabase.Size = new System.Drawing.Size(1620, 975);
+            this.dataGridViewDatabase.Size = new System.Drawing.Size(1670, 1029);
             this.dataGridViewDatabase.TabIndex = 0;
             this.dataGridViewDatabase.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDatabase_CellContentClick);
             // 
@@ -162,18 +161,6 @@
             this.ColumnSalary.Name = "ColumnSalary";
             this.ColumnSalary.Width = 150;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(1462, 1091);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(176, 48);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -185,21 +172,42 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "View Database";
             // 
+            // btnCloseView
+            // 
+            this.btnCloseView.Location = new System.Drawing.Point(1522, 1147);
+            this.btnCloseView.Name = "btnCloseView";
+            this.btnCloseView.Size = new System.Drawing.Size(173, 55);
+            this.btnCloseView.TabIndex = 3;
+            this.btnCloseView.Text = "Close";
+            this.btnCloseView.UseVisualStyleBackColor = true;
+            this.btnCloseView.Click += new System.EventHandler(this.btnCloseView_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dataGridViewDatabase);
+            this.panel1.Location = new System.Drawing.Point(25, 92);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1670, 1029);
+            this.panel1.TabIndex = 4;
+            // 
             // ViewDatabase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1656, 1172);
+            this.ClientSize = new System.Drawing.Size(1717, 1245);
+            this.Controls.Add(this.btnCloseView);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.dataGridViewDatabase);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ViewDatabase";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "ViewDatabase";
             this.Load += new System.EventHandler(this.ViewDatabase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDatabase)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,7 +216,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewDatabase;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFirst;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLast;
@@ -224,5 +231,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHire;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalary;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCloseView;
+        private System.Windows.Forms.Panel panel1;
     }
 }

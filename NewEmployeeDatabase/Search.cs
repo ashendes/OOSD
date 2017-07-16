@@ -17,6 +17,7 @@ namespace NewEmployeeDatabase
         Employee emp = new Employee();
         public Search()
         {
+            
             InitializeComponent();
             
         }
@@ -79,6 +80,7 @@ namespace NewEmployeeDatabase
             dataGridViewSearch.Enabled = false;
             btnEdit.Enabled = false;
             btnView.Enabled = false;
+            btnSearch.Enabled = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -129,6 +131,18 @@ namespace NewEmployeeDatabase
         {
             Form viewEmp = new ViewEmployee(emp.id, emp.fullName, emp.fName, emp.lName, emp.dept, emp.desig, emp.resTel, emp.mobNum, emp.address, emp.email, emp.dob, emp.hireDate, emp.gender,emp.salary);
             viewEmp.ShowDialog();
+        }
+
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbSearch.Text))
+            {
+                btnSearch.Enabled = true;
+            }
+            else
+            {
+                btnSearch.Enabled = false;
+            }
         }
     }
 }

@@ -136,28 +136,40 @@ namespace Payroll_standalone
 
         private void tbUleave_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (tbUleave.Text.Trim().Length > 0)
             {
-                
-                string query3 = "SELECT Employee_ID, Employee_Name, Start_Date, End_Date, Leave_Type FROM leavedatabase WHERE Leave_ID = '" + tbUleave.Text + "'";
-                MySqlCommand comm = new MySqlCommand(query3, db);
-                db.Open();
-                MySqlDataReader reader2 = comm.ExecuteReader();
-                while (reader2.Read())
+                try
                 {
+
+                    string query3 = "SELECT Employee_ID, Employee_Name, Start_Date, End_Date, Leave_Type FROM leavedatabase WHERE Leave_ID = '" + tbUleave.Text + "'";
+                    MySqlCommand comm = new MySqlCommand(query3, db);
+                    db.Open();
+                    MySqlDataReader reader2 = comm.ExecuteReader();
+                    //while (reader2.Read())
+                    //{
+                    reader2.Read();
                     tbUid.Text = reader2.GetString(0);
                     tbUname.Text = reader2.GetString(1);
                     dtUstart.Value = DateTime.ParseExact(reader2.GetString(2), "dd/MM/yyyy", null);
                     dtUend.Value = DateTime.ParseExact(reader2.GetString(3), "dd/MM/yyyy", null);
                     cbType.Text = reader2.GetString(4);
+                    //}
+                    db.Close();
                 }
-                db.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                catch (MySqlException err)
+                {
+                    MessageBox.Show("Please enter a valid Leave ID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Close();
+                }
+                catch (Exception ex)
+                {
 
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.Close();
+                }
+                
+                
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

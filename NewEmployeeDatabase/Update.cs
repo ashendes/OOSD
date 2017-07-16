@@ -90,14 +90,14 @@ namespace NewEmployeeDatabase
             command.Parameters.AddWithValue("@full", tbFullname.Text);
             command.Parameters.AddWithValue("@fname", tbFname.Text);
             command.Parameters.AddWithValue("@lname", tbLname.Text);
-            command.Parameters.AddWithValue("@dob", dtDob.Value.ToShortDateString());
+            command.Parameters.AddWithValue("@dob", dtDob.Value.ToString("dd/MM/yyyy"));
             command.Parameters.AddWithValue("@dept", tbDept.Text);
             command.Parameters.AddWithValue("@des", tbPosition.Text);
             command.Parameters.AddWithValue("@gen", cbGender.Text);
             command.Parameters.AddWithValue("@email", tbEmail.Text);
             command.Parameters.AddWithValue("@res", tbResident.Text);
             command.Parameters.AddWithValue("@mob", tbMobile.Text);
-            command.Parameters.AddWithValue("@hire", dtHire.Value.ToShortDateString());
+            command.Parameters.AddWithValue("@hire", dtHire.Value.ToString("dd/MM/yyyy"));
             command.Parameters.AddWithValue("@addr", tbAddress.Text);
             command.Parameters.AddWithValue("@id", tbId.Text);
 

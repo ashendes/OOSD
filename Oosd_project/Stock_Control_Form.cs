@@ -40,7 +40,7 @@ namespace Oosd_project
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1.Current.ShowDialog();
+            //Form1.Current.ShowDialog();
         }
 
         //log out button

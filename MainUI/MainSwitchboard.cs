@@ -10,52 +10,45 @@ using System.Windows.Forms;
 using Payroll_standalone;
 using NewEmployeeDatabase;
 using Oosd_project;
+using System.IO;
 
 namespace MainUI
 {
     public partial class MainSwitchboard : Form
     {
+        string[] images = { "hotwheels.jpg", "stuffed.jpg", "kid.jpg","puzzle.jpg","block.jpg" };
+        int i = 0;
         public MainSwitchboard()
-        {
+        {            
             InitializeComponent();
-            DBConnection.setupDBConnection();
+            DBConnection.setupDBConnection();            
         }
 
         private void btnDAE_Click(object sender, EventArgs e)
         {
-            var form = new DailyAttendanceEntryForm();
-            form.Show();
+            var dailyForm = new DailyAttendanceEntryForm();
+            dailyForm.ShowDialog();
         }
 
         private void btnSA_Click(object sender, EventArgs e)
         {
-            var form = new SalaryAmendmentForm();
-            form.Show();
+            var salaryForm = new SalaryAmendmentForm();
+            salaryForm.ShowDialog();
         }
 
         private void btnEditRates_Click(object sender, EventArgs e)
         {
-            var form = new Amendment_Rates();
-            form.Show();
+            var rateForm = new Amendment_Rates();
+            rateForm.ShowDialog();
         }
 
         private void btnSalCalc_Click(object sender, EventArgs e)
         {
-            var form = new SalaryInfo();
-            form.Show();
+            var salCalForm = new SalaryInfo();
+            salCalForm.ShowDialog();
         }
 
-        private void btnInventory_Click(object sender, EventArgs e)
-        {
-            var form = new Form1();
-            form.Show();
-        }
-
-        private void btnHR_Click(object sender, EventArgs e)
-        {
-            var form = new Main();
-            form.Show();
-        }
+        
 
         private void mainButton_Click(object sender, EventArgs e)
         {
@@ -65,6 +58,8 @@ namespace MainUI
         private void MainSwitchboard_Load(object sender, EventArgs e)
         {
             
+            pbSlide.Image = Image.FromFile("C:/Users/ASUS/Documents/Repos/OOSD/MainUI/Images/" + images[0]);
+            label2.Text = DateTime.Now.Date.ToString("dd-MMMM-yyyy");
             payrolltimeleft.Minimum = 0;
             payrolltimeleft.Maximum = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
             payrolltimeleft.Value = DateTime.Now.Day;
@@ -81,33 +76,33 @@ namespace MainUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var form = new Stock_Control_Form();
-            form.Show();
+            var stockForm = new Stock_Control_Form();
+            stockForm.ShowDialog();
         }
 
         private void btnResource_Click(object sender, EventArgs e)
         {
-            var form = new Resource_Control_Form();
-            form.Show();
+            var resForm = new Resource_Control_Form();
+            resForm.ShowDialog();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var form = new AddEmployee();
-            form.Show();
+            var addForm = new AddEmployee();
+            addForm.ShowDialog();
         }
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            var form = new ViewDatabase();
-            form.Show();
+            var viewForm = new ViewDatabase();
+            viewForm.ShowDialog();
 
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var form = new Search();
-            form.Show();
+            var searchForm = new Search();
+            searchForm.ShowDialog();
         }
 
         private void payrolltimeleft_Click(object sender, EventArgs e)
@@ -117,14 +112,45 @@ namespace MainUI
 
         private void btnLeave_Click(object sender, EventArgs e)
         {
-            var form = new Leave();
-            form.Show();
+            var leaveForm = new Leave();
+            leaveForm.ShowDialog();
         }
 
         private void btnViewPayroll_Click(object sender, EventArgs e)
         {
-            var form = new ViewPayrollInfo();
-            form.Show();
+            var payForm = new ViewPayrollInfo();
+            payForm.ShowDialog();
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            var abtForm = new About();
+            abtForm.ShowDialog();
+        }
+
+        private void displayDate()
+        {
+            label2.Text = DateTime.Now.Date.ToShortDateString();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Enabled = false;
+
+            i++;
+            if (images.Length == i)
+            {
+                i = 0;
+            }
+            timer2.Enabled = true;
+            
+            pbSlide.Image = Image.FromFile("C:/Users/ASUS/Documents/Repos/OOSD/MainUI/Images/" + images[i]);
+            
         }
     }
 }

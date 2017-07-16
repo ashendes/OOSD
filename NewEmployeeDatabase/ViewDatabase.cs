@@ -19,10 +19,7 @@ namespace NewEmployeeDatabase
             InitializeComponent();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void ViewDatabase_Load(object sender, EventArgs e)
         {
@@ -65,6 +62,11 @@ namespace NewEmployeeDatabase
         private void dataGridViewDatabase_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnCloseView_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -42,6 +42,8 @@ namespace NewEmployeeDatabase
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            btnSave.Enabled = false;
+
             MySqlConnection con = new MySqlConnection(conString);
             MySqlCommand command = con.CreateCommand();
             command.CommandText = "INSERT INTO employeedatabase(Full_Name,First_Name,Last_Name,Date_of_Birth,Department,Designation,Gender,Email,Residence_Telephone,Mobile_Number,Hire_Date,Address,Basic_Salary) VALUES(@full,@fname,@lname,@dob,@dept,@pos,@gender,@email,@resid,@mobile,@hire,@address,@salary)";
@@ -49,14 +51,14 @@ namespace NewEmployeeDatabase
             command.Parameters.AddWithValue("@full", tbFullname.Text);
             command.Parameters.AddWithValue("@fname", tbFname.Text);
             command.Parameters.AddWithValue("@lname", tbLname.Text);
-            command.Parameters.AddWithValue("@dob", dtDob.Value.ToShortDateString());
+            command.Parameters.AddWithValue("@dob", dtDob.Value.ToString("dd/MM/yyyy"));
             command.Parameters.AddWithValue("@dept", tbDept.Text);
             command.Parameters.AddWithValue("@pos", tbPosition.Text);
             command.Parameters.AddWithValue("@gender", cbGender.Text);
             command.Parameters.AddWithValue("@email", tbEmail.Text);
             command.Parameters.AddWithValue("@resid", tbResident.Text);
             command.Parameters.AddWithValue("@mobile", tbMobile.Text);
-            command.Parameters.AddWithValue("@hire", dtHire.Value.ToShortDateString());
+            command.Parameters.AddWithValue("@hire", dtHire.Value.ToString("dd/MM/yyyy"));
             command.Parameters.AddWithValue("@address", tbAddress.Text);
             command.Parameters.AddWithValue("@salary", tbSalary.Text);
             try
@@ -71,6 +73,7 @@ namespace NewEmployeeDatabase
             catch (Exception ex)
             { 
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                con.Close();
             }
         }
 
@@ -96,6 +99,7 @@ namespace NewEmployeeDatabase
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
 
         }
