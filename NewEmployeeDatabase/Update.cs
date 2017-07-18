@@ -117,5 +117,81 @@ namespace NewEmployeeDatabase
                 }
             }
         }
+
+        private void setButtonEnabledState()
+        {
+            if ((this.tbFullname.Text.Trim().Length > 0 && this.tbFullname.Text.All(c => char.IsLetter(c) || c == ' '))
+                && (this.tbFname.Text.Trim().Length > 0 && this.tbFname.Text.All(c => char.IsLetter(c) || c == ' '))
+                && (this.tbLname.Text.Trim().Length > 0 && this.tbLname.Text.All(c => char.IsLetter(c) || c == ' '))
+                && (this.tbResident.Text.All(char.IsDigit))
+                && (this.tbMobile.Text.All(char.IsDigit))
+                && this.tbDept.Text.All(c => char.IsLetter(c) || c == ' ')
+                && this.tbPosition.Text.All(c => char.IsLetter(c) || c == ' '))
+            {
+                btnUpdate.Enabled = true;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
+            }
+        }
+
+        private void tbFullname_TextChanged(object sender, EventArgs e)
+        {
+            setButtonEnabledState();
+        }
+
+        private void tbFname_TextChanged(object sender, EventArgs e)
+        {
+            setButtonEnabledState();
+        }
+
+        private void tbLname_TextChanged(object sender, EventArgs e)
+        {
+            setButtonEnabledState();
+        }
+
+        private void tbAddress_TextChanged(object sender, EventArgs e)
+        {
+            setButtonEnabledState();
+        }
+
+        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setButtonEnabledState();
+        }
+
+        private void tbDept_TextChanged(object sender, EventArgs e)
+        {
+            setButtonEnabledState();
+        }
+
+        private void tbPosition_TextChanged(object sender, EventArgs e)
+        {
+            setButtonEnabledState();
+        }
+
+        private void tbEmail_TextChanged(object sender, EventArgs e)
+        {
+            setButtonEnabledState();
+        }
+
+        private void tbResident_TextChanged(object sender, EventArgs e)
+        {
+            if (this.tbResident.Text.Length == 10 || this.tbResident.Text.Length == 0)
+            {
+                setButtonEnabledState();
+            }
+            else { btnUpdate.Enabled = false; }
+        }
+
+        private void tbMobile_TextChanged(object sender, EventArgs e)
+        {
+            if (this.tbMobile.Text.Length == 10 || this.tbMobile.Text.Length == 0)
+            {
+                setButtonEnabledState();
+            }
+            else { btnUpdate.Enabled = false; }
+        }
     }
 }

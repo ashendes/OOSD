@@ -133,17 +133,18 @@ namespace Payroll_standalone
 
         private void btnViewPayslip_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count == 0)
+            
+            try
             {
-                MessageBox.Show("No record selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
+                DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
                 SalaryRecord record = new SalaryRecord(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), dateTimePicker1.Value.Month.ToString(), dateTimePicker1.Value.Year.ToString(), row.Cells[6].Value.ToString(), row.Cells[7].Value.ToString(), row.Cells[8].Value.ToString(), row.Cells[9].Value.ToString(), row.Cells[10].Value.ToString(), row.Cells[11].Value.ToString(), row.Cells[12].Value.ToString(), row.Cells[13].Value.ToString(), row.Cells[14].Value.ToString(), row.Cells[15].Value.ToString(), row.Cells[16].Value.ToString(), row.Cells[17].Value.ToString());
                 var payslip = new PayslipViewer();
                 payslip.showReport(record);
                 payslip.Show();
+            }catch (Exception ex)
+            {
+                MessageBox.Show("No record selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
     }

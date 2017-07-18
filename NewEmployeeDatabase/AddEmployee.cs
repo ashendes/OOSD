@@ -110,8 +110,8 @@ namespace NewEmployeeDatabase
                 && (this.tbFname.Text.Trim().Length > 0 && this.tbFname.Text.All(c => char.IsLetter(c) || c == ' '))
                 && (this.tbLname.Text.Trim().Length > 0 && this.tbLname.Text.All(c=>char.IsLetter(c)||c==' '))
                 && (this.tbSalary.Text.Trim().Length > 0 && this.tbSalary.Text.All(char.IsDigit))
-                && this.tbResident.Text.All(c=>char.IsDigit(c) || c== '+')
-                && this.tbMobile.Text.All(c => char.IsDigit(c) || c == '+')
+                && (this.tbResident.Text.All(char.IsDigit))
+                && (this.tbMobile.Text.All(char.IsDigit))
                 && this.tbDept.Text.All(c => char.IsLetter(c) || c == ' ')
                 && this.tbPosition.Text.All(c => char.IsLetter(c) || c == ' '))
             {
@@ -155,12 +155,25 @@ namespace NewEmployeeDatabase
 
         private void tbResident_TextChanged(object sender, EventArgs e)
         {
-            setButtonEnabledState();
+            if (this.tbResident.Text.Length == 10 || this.tbResident.Text.Length == 0)
+            {
+                setButtonEnabledState();
+            }
+            else { btnSave.Enabled = false; }
         }
 
         private void tbMobile_TextChanged(object sender, EventArgs e)
         {
-            setButtonEnabledState();
+            if (this.tbMobile.Text.Length == 10 || this.tbMobile.Text.Length == 0)
+            {
+                setButtonEnabledState();
+            }
+            else { btnSave.Enabled = false; }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -41,16 +41,16 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(69, 101);
+            this.pictureBox1.Location = new System.Drawing.Point(63, 82);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(362, 192);
+            this.pictureBox1.Size = new System.Drawing.Size(306, 160);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(829, 293);
+            this.btnLogin.Location = new System.Drawing.Point(714, 244);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(187, 55);
             this.btnLogin.TabIndex = 2;
@@ -60,7 +60,7 @@
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Location = new System.Drawing.Point(621, 219);
+            this.tbxPassword.Location = new System.Drawing.Point(506, 193);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(395, 31);
@@ -69,7 +69,7 @@
             // 
             // tbxUsername
             // 
-            this.tbxUsername.Location = new System.Drawing.Point(621, 134);
+            this.tbxUsername.Location = new System.Drawing.Point(506, 108);
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(395, 31);
             this.tbxUsername.TabIndex = 0;
@@ -79,20 +79,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(465, 219);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(394, 193);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 33);
+            this.label2.Size = new System.Drawing.Size(106, 25);
             this.label2.TabIndex = 10;
             this.label2.Text = "Password";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(465, 134);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(394, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 33);
+            this.label1.Size = new System.Drawing.Size(110, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Username";
             // 
@@ -100,7 +100,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 418);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(985, 378);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxPassword);

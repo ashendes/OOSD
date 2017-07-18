@@ -47,10 +47,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(108, 245);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(68, 156);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(231, 33);
+            this.label4.Size = new System.Drawing.Size(111, 17);
             this.label4.TabIndex = 11;
             this.label4.Text = "Employee Name";
             // 
@@ -58,29 +59,31 @@
             // 
             this.dateTimePicker.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker.Location = new System.Drawing.Point(495, 78);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker.Location = new System.Drawing.Point(309, 49);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(512, 40);
+            this.dateTimePicker.Size = new System.Drawing.Size(322, 22);
             this.dateTimePicker.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 86);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(68, 57);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 33);
+            this.label3.Size = new System.Drawing.Size(38, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "Date";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(108, 160);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(68, 103);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 33);
+            this.label2.Size = new System.Drawing.Size(87, 17);
             this.label2.TabIndex = 8;
             this.label2.Text = "Employee ID";
             // 
@@ -89,39 +92,40 @@
             this.cbxEmpID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbxEmpID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxEmpID.FormattingEnabled = true;
-            this.cbxEmpID.Location = new System.Drawing.Point(495, 160);
-            this.cbxEmpID.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxEmpID.Location = new System.Drawing.Point(309, 100);
+            this.cbxEmpID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxEmpID.Name = "cbxEmpID";
-            this.cbxEmpID.Size = new System.Drawing.Size(512, 41);
+            this.cbxEmpID.Size = new System.Drawing.Size(322, 24);
             this.cbxEmpID.TabIndex = 7;
             this.cbxEmpID.SelectedIndexChanged += new System.EventHandler(this.cbxEmpID_SelectedIndexChanged);
             // 
             // tbxEmpName
             // 
-            this.tbxEmpName.Location = new System.Drawing.Point(495, 245);
-            this.tbxEmpName.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxEmpName.Location = new System.Drawing.Point(309, 153);
+            this.tbxEmpName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxEmpName.Name = "tbxEmpName";
             this.tbxEmpName.ReadOnly = true;
-            this.tbxEmpName.Size = new System.Drawing.Size(512, 40);
+            this.tbxEmpName.Size = new System.Drawing.Size(322, 22);
             this.tbxEmpName.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 413);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(68, 261);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 33);
+            this.label1.Size = new System.Drawing.Size(56, 17);
             this.label1.TabIndex = 13;
             this.label1.Text = "Amount";
             // 
             // tbxAmount
             // 
-            this.tbxAmount.Location = new System.Drawing.Point(495, 413);
-            this.tbxAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxAmount.Location = new System.Drawing.Point(309, 258);
+            this.tbxAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbxAmount.MaxLength = 10;
             this.tbxAmount.Name = "tbxAmount";
-            this.tbxAmount.Size = new System.Drawing.Size(512, 40);
+            this.tbxAmount.Size = new System.Drawing.Size(322, 22);
             this.tbxAmount.TabIndex = 12;
             this.tbxAmount.Text = "0.00";
             this.tbxAmount.TextChanged += new System.EventHandler(this.tbxAmount_TextChanged);
@@ -138,9 +142,10 @@
             "Advance",
             "Allowance",
             "Bonus"});
-            this.cbxAmendType.Location = new System.Drawing.Point(496, 329);
+            this.cbxAmendType.Location = new System.Drawing.Point(310, 206);
+            this.cbxAmendType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxAmendType.Name = "cbxAmendType";
-            this.cbxAmendType.Size = new System.Drawing.Size(511, 41);
+            this.cbxAmendType.Size = new System.Drawing.Size(321, 24);
             this.cbxAmendType.TabIndex = 14;
             this.cbxAmendType.DropDown += new System.EventHandler(this.cbxAmendType_DropDown);
             this.cbxAmendType.SelectedValueChanged += new System.EventHandler(this.cbxAmendType_SelectedValueChanged);
@@ -149,18 +154,21 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(108, 329);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(68, 209);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(245, 33);
+            this.label5.Size = new System.Drawing.Size(119, 17);
             this.label5.TabIndex = 15;
             this.label5.Text = "Amendment Type";
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(114, 508);
+            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Location = new System.Drawing.Point(71, 325);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(327, 83);
+            this.btnSubmit.Size = new System.Drawing.Size(163, 45);
             this.btnSubmit.TabIndex = 16;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -168,9 +176,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(679, 508);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(468, 325);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(327, 83);
+            this.btnCancel.Size = new System.Drawing.Size(163, 45);
             this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -181,10 +191,10 @@
             this.lblSelect.AutoSize = true;
             this.lblSelect.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblSelect.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.lblSelect.Location = new System.Drawing.Point(499, 332);
-            this.lblSelect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSelect.Location = new System.Drawing.Point(312, 208);
+            this.lblSelect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSelect.Name = "lblSelect";
-            this.lblSelect.Size = new System.Drawing.Size(112, 33);
+            this.lblSelect.Size = new System.Drawing.Size(55, 17);
             this.lblSelect.TabIndex = 18;
             this.lblSelect.Text = "[Select]";
             // 
@@ -193,20 +203,20 @@
             this.lblSelect2.AutoSize = true;
             this.lblSelect2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblSelect2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblSelect2.Location = new System.Drawing.Point(498, 162);
-            this.lblSelect2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSelect2.Location = new System.Drawing.Point(311, 101);
+            this.lblSelect2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSelect2.Name = "lblSelect2";
-            this.lblSelect2.Size = new System.Drawing.Size(112, 33);
+            this.lblSelect2.Size = new System.Drawing.Size(55, 17);
             this.lblSelect2.TabIndex = 19;
             this.lblSelect2.Text = "[Select]";
             this.lblSelect2.Click += new System.EventHandler(this.lblSelect2_Click);
             // 
             // SalaryAmendmentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1087, 661);
+            this.ClientSize = new System.Drawing.Size(679, 413);
             this.Controls.Add(this.lblSelect2);
             this.Controls.Add(this.lblSelect);
             this.Controls.Add(this.btnCancel);
@@ -221,8 +231,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbxEmpID);
             this.Controls.Add(this.tbxEmpName);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SalaryAmendmentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Salary Amendment";

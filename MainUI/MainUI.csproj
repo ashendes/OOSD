@@ -37,6 +37,11 @@
       <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="mysql.data">
       <HintPath>..\..\..\MySql Plugins\mysql.data.dll</HintPath>
     </Reference>
@@ -81,6 +86,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserType.cs" />
     <EmbeddedResource Include="MainSwitchboard.resx">
       <DependentUpon>MainSwitchboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +128,10 @@
     <ProjectReference Include="..\Payroll standalone\Payroll standalone.csproj">
       <Project>{db6efcd5-ed93-4f0c-a84b-b0a00e512c73}</Project>
       <Name>Payroll standalone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SemProject\SemProject.csproj">
+      <Project>{033a1fb7-6a7b-4f69-922d-868ddfe1b7e1}</Project>
+      <Name>SemProject</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

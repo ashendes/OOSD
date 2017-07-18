@@ -73,8 +73,9 @@
             this.ColumnHire,
             this.ColumnSalary});
             this.dataGridViewDatabase.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewDatabase.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridViewDatabase.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.dataGridViewDatabase.Name = "dataGridViewDatabase";
+            this.dataGridViewDatabase.ReadOnly = true;
             this.dataGridViewDatabase.RowTemplate.Height = 24;
             this.dataGridViewDatabase.Size = new System.Drawing.Size(1670, 1029);
             this.dataGridViewDatabase.TabIndex = 0;
@@ -84,89 +85,102 @@
             // 
             this.ColumnID.HeaderText = "ID";
             this.ColumnID.Name = "ColumnID";
+            this.ColumnID.ReadOnly = true;
             this.ColumnID.Width = 75;
             // 
             // ColumnFirst
             // 
             this.ColumnFirst.HeaderText = "First Name";
             this.ColumnFirst.Name = "ColumnFirst";
+            this.ColumnFirst.ReadOnly = true;
             this.ColumnFirst.Width = 150;
             // 
             // ColumnLast
             // 
             this.ColumnLast.HeaderText = "Last Name";
             this.ColumnLast.Name = "ColumnLast";
+            this.ColumnLast.ReadOnly = true;
             this.ColumnLast.Width = 150;
             // 
             // ColumnDept
             // 
             this.ColumnDept.HeaderText = "Department";
             this.ColumnDept.Name = "ColumnDept";
+            this.ColumnDept.ReadOnly = true;
             this.ColumnDept.Width = 150;
             // 
             // ColumnDes
             // 
             this.ColumnDes.HeaderText = "Designation";
             this.ColumnDes.Name = "ColumnDes";
+            this.ColumnDes.ReadOnly = true;
             this.ColumnDes.Width = 200;
             // 
             // ColumnMob
             // 
             this.ColumnMob.HeaderText = "Mobile Number";
             this.ColumnMob.Name = "ColumnMob";
+            this.ColumnMob.ReadOnly = true;
             // 
             // ColumnAddresss
             // 
             this.ColumnAddresss.HeaderText = "Address";
             this.ColumnAddresss.Name = "ColumnAddresss";
+            this.ColumnAddresss.ReadOnly = true;
             this.ColumnAddresss.Width = 400;
             // 
             // ColumnDob
             // 
             this.ColumnDob.HeaderText = "Date of Birth";
             this.ColumnDob.Name = "ColumnDob";
+            this.ColumnDob.ReadOnly = true;
             // 
             // ColumnGen
             // 
             this.ColumnGen.HeaderText = "Gender";
             this.ColumnGen.Name = "ColumnGen";
+            this.ColumnGen.ReadOnly = true;
             this.ColumnGen.Width = 75;
             // 
             // ColumnEmail
             // 
             this.ColumnEmail.HeaderText = "Email";
             this.ColumnEmail.Name = "ColumnEmail";
+            this.ColumnEmail.ReadOnly = true;
             this.ColumnEmail.Width = 200;
             // 
             // ColumnFull
             // 
             this.ColumnFull.HeaderText = "Full Name";
             this.ColumnFull.Name = "ColumnFull";
+            this.ColumnFull.ReadOnly = true;
             this.ColumnFull.Width = 350;
             // 
             // ColumnRes
             // 
             this.ColumnRes.HeaderText = "Resident Telephone";
             this.ColumnRes.Name = "ColumnRes";
+            this.ColumnRes.ReadOnly = true;
             // 
             // ColumnHire
             // 
             this.ColumnHire.HeaderText = "Hire Date";
             this.ColumnHire.Name = "ColumnHire";
+            this.ColumnHire.ReadOnly = true;
             this.ColumnHire.Width = 75;
             // 
             // ColumnSalary
             // 
             this.ColumnSalary.HeaderText = "Basic Salary";
             this.ColumnSalary.Name = "ColumnSalary";
+            this.ColumnSalary.ReadOnly = true;
             this.ColumnSalary.Width = 150;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 33);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(18, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 42);
             this.label1.TabIndex = 2;
@@ -176,7 +190,7 @@
             // 
             this.btnCloseView.Location = new System.Drawing.Point(1522, 1147);
             this.btnCloseView.Name = "btnCloseView";
-            this.btnCloseView.Size = new System.Drawing.Size(173, 55);
+            this.btnCloseView.Size = new System.Drawing.Size(173, 54);
             this.btnCloseView.TabIndex = 3;
             this.btnCloseView.Text = "Close";
             this.btnCloseView.UseVisualStyleBackColor = true;
@@ -185,7 +199,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridViewDatabase);
-            this.panel1.Location = new System.Drawing.Point(25, 92);
+            this.panel1.Location = new System.Drawing.Point(26, 93);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1670, 1029);
             this.panel1.TabIndex = 4;
@@ -196,14 +210,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1717, 1245);
+            this.ClientSize = new System.Drawing.Size(1723, 1229);
             this.Controls.Add(this.btnCloseView);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "ViewDatabase";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewDatabase";
             this.Load += new System.EventHandler(this.ViewDatabase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDatabase)).EndInit();

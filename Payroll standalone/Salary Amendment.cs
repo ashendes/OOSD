@@ -141,33 +141,41 @@ namespace Payroll_standalone
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
+            if(cbxAmendType.SelectedIndex == -1 || cbxEmpID.SelectedIndex==-1 || Convert.ToDouble(tbxAmount.Text) == 0.00) {
+                MessageBox.Show("All fields not complete", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
             {
-                using (db)
+               
+                try
                 {
+                    using (db)
+                    {
 
-                    var query = "INSERT into `salary amendments` (`Emp_ID`, `Date_of_amendment` , `Amount` , `Amendment_type`) VALUES (" + Convert.ToInt32(cbxEmpID.Text) + ",'" + dateTimePicker.Value.Date.ToString("yyyy-MM-dd") + "'," + tbxAmount.Text + "," + typeIndex + ")";
-                    using (var command = new MySqlCommand(query, db))
-                    {
-                        db.Open();
-                        command.ExecuteNonQuery();
-                        db.Close();
-                    }
-                    MessageBox.Show("Salary amendments added for Employee " + cbxEmpID.Text + ":" + tbxEmpName.Text, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    if (MessageBox.Show("Add another amendment?", "Salary Amendment", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
-                    {
-                        reset();
-                    }
-                    else
-                    {
-                        this.Close();
+                        var query = "INSERT into `salary amendments` (`Emp_ID`, `Date_of_amendment` , `Amount` , `Amendment_type`) VALUES (" + Convert.ToInt32(cbxEmpID.Text) + ",'" + dateTimePicker.Value.Date.ToString("yyyy-MM-dd") + "'," + tbxAmount.Text + "," + typeIndex + ")";
+                        using (var command = new MySqlCommand(query, db))
+                        {
+                            db.Open();
+                            command.ExecuteNonQuery();
+                            db.Close();
+                        }
+                        MessageBox.Show("Salary amendments added for Employee " + cbxEmpID.Text + ":" + tbxEmpName.Text, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (MessageBox.Show("Add another amendment?", "Salary Amendment", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            reset();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
 
             
         }

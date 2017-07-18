@@ -51,3 +51,59 @@ C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\mysql.visualstu
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\mysql.web.dll
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE.xml
 C:\Users\ASUS\Documents\Repos\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE80.xml
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.exe.config
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.exe
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.pdb
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\mysql.data.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\mysql.data.entity.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\mysql.web.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE80.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\stdole.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.MSXML.dll
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE.xml
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE80.xml
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.csproj.NewEmployeeDatabase.exe.config
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.About.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.AddEmployee.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.Main.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.Properties.Resources.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.Search.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.Update.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.ViewDatabase.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.ViewEmployee.resources
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.csproj.GenerateResource.Cache
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.exe
+C:\Users\User\Documents\Visual Studio 2017\Projects\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.pdb
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.exe.config
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.exe
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\NewEmployeeDatabase.pdb
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE.dll
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE80.dll
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\Microsoft.MSXML.dll
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\stdole.dll
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE.xml
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\bin\Debug\EnvDTE80.xml
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.csprojResolveAssemblyReference.cache
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.csproj.NewEmployeeDatabase.exe.config
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.About.resources
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.AddEmployee.resources
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.Main.resources
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.Properties.Resources.resources
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.Search.resources
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.Update.resources
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.ViewDatabase.resources
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.ViewEmployee.resources
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.csproj.GenerateResource.Cache
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.exe
+C:\Users\ASUS\Desktop\OOSD\NewEmployeeDatabase\obj\Debug\NewEmployeeDatabase.pdb

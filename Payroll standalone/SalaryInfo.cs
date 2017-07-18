@@ -390,6 +390,7 @@ namespace Payroll_standalone
 
                     MessageBox.Show("Salary details added for " + cbxEmpID.Text + ": " + tbxEmpName.Text, "" + month.Text + " " + year.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnViewPS.Enabled = true;
+                    btnConfirm.Enabled = false;
                 }
 
 
@@ -515,8 +516,66 @@ namespace Payroll_standalone
         }
 
         private void cbxEmpID_TextChanged(object sender, EventArgs e)
+        {      
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-           
+            if (tbxID.Text == "")
+            {
+                MessageBox.Show("Enter an ID or Name", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (tbxID.Text != "" )
+            {
+                try
+                {
+                    using (db)
+                    {
+                        string query = "SELECT * FROM employeedatabase WHERE ID = '" + tbxID.Text + "'";
+                        using (var command = new MySqlCommand(query, db))
+                        {
+                            db.Open();
+                            using (var reader = command.ExecuteReader())
+                            {
+                                reader.Read();
+                                tbxEmpName.Text = reader.GetString("First_Name") + " " + reader.GetString("Last_Name");
+                                tbxDept.Text = reader.GetString("Department");
+                                tbxDesignation.Text = reader.GetString("Designation");
+                                tbxBasicSal.Text = Convert.ToDouble(reader.GetString("Basic_Salary")).ToString("0.00");
+                                tbxArrears.Text = Convert.ToDouble(reader.GetString("Arrears")).ToString("0.00");
+                            }
+                            db.Close();
+                        }
+                        cbxEmpID.Text = tbxID.Text;
+                        calculateTotalHours(cbxEmpID.Text, month, year);
+                        getAmendments(cbxEmpID.Text, month, year);
+                        formatTemp();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex is MySqlException)
+                    {
+                        MessageBox.Show("No such employee in database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cbxEmpID.Text = "";
+                        reset();
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+                }
+            
+            }
+        
+            
+        }
+
+        private void tbxID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            filterNonNumericInput(sender, e);
         }
     }
 }

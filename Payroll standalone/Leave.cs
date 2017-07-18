@@ -115,7 +115,9 @@ namespace Payroll_standalone
 
         public void setButtonEnableState()
         {
-            if (this.tbId.Text.Trim().Length > 0 && this.tbName.Text.Trim().Length > 0 && this.cbType.Text.Trim().Length > 0)
+            if ((this.tbId.Text.Trim().Length > 0 && this.tbId.Text.All(char.IsDigit))
+                && (this.tbName.Text.Trim().Length > 0 && this.tbName.Text.All(c => char.IsLetter(c) || c == ' '))
+                && (this.cbType.Text.Trim().Length > 0))
             {
                 btnAdd.Enabled = true;
             }
@@ -215,7 +217,12 @@ namespace Payroll_standalone
 
         private void tbId_TextChanged(object sender, EventArgs e)
         {
+            setButtonEnableState();
+        }
 
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+            setButtonEnableState();
         }
     }
 }

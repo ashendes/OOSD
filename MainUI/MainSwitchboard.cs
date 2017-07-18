@@ -11,6 +11,8 @@ using Payroll_standalone;
 using NewEmployeeDatabase;
 using Oosd_project;
 using System.IO;
+using SemProject;
+using Microsoft.Office.Interop.Word;
 
 namespace MainUI
 {
@@ -18,10 +20,13 @@ namespace MainUI
     {
         string[] images = { "hotwheels.jpg", "stuffed.jpg", "kid.jpg", "puzzle.jpg", "block.jpg" };
         int i = 0;
+        UserType newUser;
+        
         public MainSwitchboard(string user)
         {
             InitializeComponent();
             username.Text = user;
+            newUser = new UserType(user);
         }
 
         private void btnDAE_Click(object sender, EventArgs e)
@@ -57,7 +62,7 @@ namespace MainUI
 
         private void MainSwitchboard_Load(object sender, EventArgs e)
         {
-            pbSlide.Image = Image.FromFile("C:/Users/ASUS/Documents/Repos/OOSD/MainUI/Images/" + images[0]);
+            pbSlide.Image = Image.FromFile("C:/Users/ASUS/Desktop/OOSD/MainUI/Images/" + images[0]);
             label2.Text = DateTime.Now.Date.ToString("dd-MMMM-yyyy");
             /*lbldaysleft.Parent = payrolltimeleft;
             label1.Parent = payrolltimeleft;
@@ -68,6 +73,8 @@ namespace MainUI
             payrolltimeleft.Value = DateTime.Now.Day;
             lbldaysleft.Text = Convert.ToString(DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - DateTime.Now.Day) + " days";
             lbldaysleft.Visible = true;
+
+            grantPrivileges(newUser.getType());
         }
 
 
@@ -138,7 +145,8 @@ namespace MainUI
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            var savedocform = new SaveDocumentForm();
+            savedocform.ShowDialog();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -152,8 +160,7 @@ namespace MainUI
             }
             timer2.Enabled = true;
 
-            pbSlide.Image = Image.FromFile("C:/Users/ASUS/Documents/Repos/OOSD/MainUI/Images/" + images[i]);
-            
+            pbSlide.Image = Image.FromFile("C:/Users/ASUS/Desktop/OOSD/MainUI/Images/" + images[i]);          
 
         }
 
@@ -193,6 +200,54 @@ namespace MainUI
             }
         }
 
-        
+        private void btnFindDoc_Click(object sender, EventArgs e)
+        {
+            var finddoc = new FindDocumentForm();
+            finddoc.ShowDialog();
+        }
+
+        private void btnNewDoc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Word.Application ap = new Microsoft.Office.Interop.Word.Application();
+                Document document = ap.Documents.Open(@"C:\Users\ASUS\Desktop\Templates\template.doc", ReadOnly:false);
+                ap.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        public void grantPrivileges(string type)
+        {
+            if (type.Equals("admin"))
+            {
+                btnSalCalc.Enabled = false;
+            }
+            else if (type.Equals("acc"))
+            {
+                groupBox3.Enabled = false;
+                groupBox4.Enabled = false;
+            }
+            else
+            {
+                groupBox2.Enabled = false;
+                btnSalCalc.Enabled = false;
+                btnSA.Enabled = false;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pbSlide_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

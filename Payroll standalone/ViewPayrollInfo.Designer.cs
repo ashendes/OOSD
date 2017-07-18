@@ -58,18 +58,20 @@
             // 
             this.dateTimePicker1.CustomFormat = "MMMM, yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(187, 46);
+            this.dateTimePicker1.Location = new System.Drawing.Point(125, 29);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(335, 31);
+            this.dateTimePicker1.Size = new System.Drawing.Size(225, 22);
             this.dateTimePicker1.TabIndex = 0;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 46);
+            this.label1.Location = new System.Drawing.Point(25, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 25);
+            this.label1.Size = new System.Drawing.Size(94, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Select month:";
             // 
@@ -97,11 +99,12 @@
             this.EPF,
             this.ETF,
             this.NetSalary});
-            this.dataGridView1.Location = new System.Drawing.Point(26, 108);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 69);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(1844, 792);
+            this.dataGridView1.Size = new System.Drawing.Size(1229, 507);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -215,34 +218,41 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(552, 46);
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(370, 19);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(178, 34);
+            this.btnSearch.Size = new System.Drawing.Size(119, 36);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnViewPayslip
             // 
-            this.btnViewPayslip.Location = new System.Drawing.Point(1569, 925);
+            this.btnViewPayslip.BackColor = System.Drawing.Color.White;
+            this.btnViewPayslip.Location = new System.Drawing.Point(1046, 592);
+            this.btnViewPayslip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewPayslip.Name = "btnViewPayslip";
-            this.btnViewPayslip.Size = new System.Drawing.Size(301, 61);
+            this.btnViewPayslip.Size = new System.Drawing.Size(201, 39);
             this.btnViewPayslip.TabIndex = 4;
             this.btnViewPayslip.Text = "View Payslip";
-            this.btnViewPayslip.UseVisualStyleBackColor = true;
+            this.btnViewPayslip.UseVisualStyleBackColor = false;
             this.btnViewPayslip.Click += new System.EventHandler(this.btnViewPayslip_Click);
             // 
             // ViewPayrollInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1896, 1013);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1264, 648);
             this.Controls.Add(this.btnViewPayslip);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ViewPayrollInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewPayrollInfo";

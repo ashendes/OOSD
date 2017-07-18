@@ -329,6 +329,7 @@
             this.Controls.Add(this.lbName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewEmployee";
             this.Load += new System.EventHandler(this.ViewEmployee_Load);
             this.ResumeLayout(false);

@@ -55,20 +55,18 @@
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(25, 120);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbSearch.Location = new System.Drawing.Point(17, 77);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(1739, 31);
+            this.tbSearch.Size = new System.Drawing.Size(1161, 22);
             this.tbSearch.TabIndex = 0;
             this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(1791, 113);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSearch.Location = new System.Drawing.Point(1194, 72);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(172, 45);
+            this.btnSearch.Size = new System.Drawing.Size(115, 29);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -95,11 +93,10 @@
             this.ColumnRes,
             this.ColumnHire,
             this.ColumnSalary});
-            this.dataGridViewSearch.Location = new System.Drawing.Point(18, 188);
-            this.dataGridViewSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridViewSearch.Location = new System.Drawing.Point(12, 120);
             this.dataGridViewSearch.Name = "dataGridViewSearch";
             this.dataGridViewSearch.RowTemplate.Height = 24;
-            this.dataGridViewSearch.Size = new System.Drawing.Size(1945, 759);
+            this.dataGridViewSearch.Size = new System.Drawing.Size(1297, 486);
             this.dataGridViewSearch.TabIndex = 2;
             this.dataGridViewSearch.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewSearch_CellMouseClick);
             // 
@@ -186,10 +183,9 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1813, 995);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Location = new System.Drawing.Point(1209, 637);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(150, 55);
+            this.btnClose.Size = new System.Drawing.Size(100, 35);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -197,10 +193,9 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(1636, 995);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEdit.Location = new System.Drawing.Point(1091, 637);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(150, 55);
+            this.btnEdit.Size = new System.Drawing.Size(100, 35);
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -208,10 +203,9 @@
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(1460, 995);
-            this.btnView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnView.Location = new System.Drawing.Point(973, 637);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(150, 55);
+            this.btnView.Size = new System.Drawing.Size(100, 35);
             this.btnView.TabIndex = 5;
             this.btnView.Text = "View";
             this.btnView.UseVisualStyleBackColor = true;
@@ -221,20 +215,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 42);
+            this.label1.Size = new System.Drawing.Size(216, 29);
             this.label1.TabIndex = 6;
             this.label1.Text = "Search Employees";
             // 
             // Search
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1986, 1100);
+            this.ClientSize = new System.Drawing.Size(1276, 669);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.btnEdit);
@@ -243,8 +236,8 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.tbSearch);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Search";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search";
             this.Load += new System.EventHandler(this.Search_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).EndInit();

@@ -31,6 +31,10 @@ namespace Payroll_standalone
             dateTimePicker2.Value = DateTime.Now;
             loadTocbxEmpID();
             loadToDataTable();
+            dataGridView1.Columns[2].ReadOnly = true;
+            dataGridView1.Columns[3].ReadOnly = true;
+            dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[0].ReadOnly = true;
             picker = new DateTimePicker();
             picker.Format = DateTimePickerFormat.Custom;
             picker.CustomFormat = "h:mm tt";
@@ -166,7 +170,7 @@ namespace Payroll_standalone
 
         private void picker_ValueChanged(object sender, EventArgs e)
         {
-            dataGridView1.CurrentCell.Value = picker.Text;
+            dataGridView1.CurrentCell.Value = picker.Text ;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -263,12 +267,21 @@ namespace Payroll_standalone
                             db.Close();
                         }
                         MessageBox.Show("Attendance updated for Employee " + cBxEmpID.Text + ":" + tbxEmpName.Text, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        cBxEmpID.SelectedIndex = cBxEmpID.SelectedIndex + 1;
+                        if(cBxEmpID.SelectedIndex < cBxEmpID.Items.Count-1) { cBxEmpID.SelectedIndex = cBxEmpID.SelectedIndex + 1; }
+                        
                     }
             
                 }catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    if(ex is MySqlException)
+                    {
+                        MessageBox.Show("Attendance for current employee exists for the current date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    
                 }
                 
             }
@@ -276,61 +289,94 @@ namespace Payroll_standalone
         }
 
        
+        private bool checkGrid()
+        {
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!Convert.ToBoolean(row.Cells[4].Value))
+                {
+                    if (row.Cells[2].Value == null || row.Cells[3].Value == null)
+                    {
+                        MessageBox.Show("Please fill the entire grid", "Incomplete data entry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }else if (Convert.ToDateTime(row.Cells[2].Value).TimeOfDay.Hours >= Convert.ToDateTime(row.Cells[3].Value).TimeOfDay.Hours)
+                    {
+                        MessageBox.Show("In Time entered might be later than Out Time", "Invalid times entered", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+                }
+             }
+            return true;
+        }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (db)
+            if (checkGrid()) {
+                try
                 {
-                    
-                    double hours_worked;
-                    double OThours;
-                    var query = "INSERT into attendance (Emp_ID, Date, In_Time, Out_Time, `Hours Worked`, `OT Hours`) VALUES (@EmpID, @Date, @InTime, @OutTime, @HoursWorked, @OTHours)";
-                    using (var command = new MySqlCommand(query, db))
+                    using (db)
                     {
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
-                        {                            
-                            if(Convert.ToBoolean(row.Cells[4].Value))
+
+                        double hours_worked;
+                        double OThours;
+                        var query = "INSERT into attendance (Emp_ID, Date, In_Time, Out_Time, `Hours Worked`, `OT Hours`) VALUES (@EmpID, @Date, @InTime, @OutTime, @HoursWorked, @OTHours)";
+                        using (var command = new MySqlCommand(query, db))
+                        {
+                            foreach (DataGridViewRow row in dataGridView1.Rows)
                             {
-                                continue;
-                            }
-                            hours_worked = calculateHoursWorked(Convert.ToDateTime(row.Cells[2].Value), Convert.ToDateTime(row.Cells[3].Value));
+                                if (Convert.ToBoolean(row.Cells[4].Value))
+                                {
+                                    continue;
+                                }
+                                hours_worked = calculateHoursWorked(Convert.ToDateTime(row.Cells[2].Value), Convert.ToDateTime(row.Cells[3].Value));
 
 
-                            if (hours_worked != 0)
-                            {
-                                if (hours_worked >= 8)
+                                if (hours_worked != 0)
                                 {
-                                    OThours = hours_worked - 8;
+                                    if (hours_worked >= 8)
+                                    {
+                                        OThours = hours_worked - 8;
+                                    }
+                                    else
+                                    {
+                                        OThours = 0;
+                                    }
+                                    db.Open();
+                                    command.Parameters.AddWithValue("@EmpID", Convert.ToInt32(row.Cells[0].Value));
+                                    command.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"));
+                                    command.Parameters.AddWithValue("@InTime", row.Cells[2].Value);
+                                    command.Parameters.AddWithValue("@OutTime", row.Cells[3].Value);
+                                    command.Parameters.AddWithValue("@HoursWorked", hours_worked.ToString());
+                                    command.Parameters.AddWithValue("@OTHours", OThours.ToString());
+                                    command.ExecuteNonQuery();
+                                    command.Parameters.Clear();
+                                    db.Close();
                                 }
-                                else
-                                {
-                                    OThours = 0;
-                                }
-                                db.Open();
-                                command.Parameters.AddWithValue("@EmpID", Convert.ToInt32(row.Cells[0].Value));
-                                command.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"));
-                                command.Parameters.AddWithValue("@InTime", row.Cells[2].Value);
-                                command.Parameters.AddWithValue("@OutTime", row.Cells[3].Value);
-                                command.Parameters.AddWithValue("@HoursWorked", hours_worked.ToString());
-                                command.Parameters.AddWithValue("@OTHours", OThours.ToString());
-                                command.ExecuteNonQuery();
-                                command.Parameters.Clear();
-                                db.Close();
                             }
-                        }                      
+                        }
+
+                        MessageBox.Show("Attendance updated for " + dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"), "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clearDataGrid();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    if (ex is MySqlException)
+                    {
+                        MessageBox.Show("Attendance has already been entered for this date", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message);
                     }
                     
-                    MessageBox.Show("Attendance updated for " + dateTimePicker1.Value.Date.ToString("yyyy-MM-dd"),"" ,MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    clearDataGrid();
                 }
-
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
             }
+            
 
         }
 
@@ -382,6 +428,29 @@ namespace Payroll_standalone
             }
 
                 
+        }
+        private void filterNonNumericInput(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void cBxEmpID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled=true;
         }
     }
 }
