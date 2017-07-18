@@ -31,7 +31,6 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.PayslipID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmployeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +49,7 @@
             this.EPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ETF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NetSalary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.btnViewPayslip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -99,10 +99,119 @@
             this.NetSalary});
             this.dataGridView1.Location = new System.Drawing.Point(26, 108);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(1844, 792);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // PayslipID
+            // 
+            this.PayslipID.HeaderText = "Payslip ID";
+            this.PayslipID.Name = "PayslipID";
+            this.PayslipID.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "Employee ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.HeaderText = "Employee Name";
+            this.EmployeeName.Name = "EmployeeName";
+            this.EmployeeName.ReadOnly = true;
+            // 
+            // Designation
+            // 
+            this.Designation.HeaderText = "Designation";
+            this.Designation.Name = "Designation";
+            this.Designation.ReadOnly = true;
+            // 
+            // Department
+            // 
+            this.Department.HeaderText = "Department";
+            this.Department.Name = "Department";
+            this.Department.ReadOnly = true;
+            // 
+            // Date_of_calculation
+            // 
+            this.Date_of_calculation.HeaderText = "Date of calculation";
+            this.Date_of_calculation.Name = "Date_of_calculation";
+            this.Date_of_calculation.ReadOnly = true;
+            // 
+            // BasicSalary
+            // 
+            this.BasicSalary.HeaderText = "Basic Salary";
+            this.BasicSalary.Name = "BasicSalary";
+            this.BasicSalary.ReadOnly = true;
+            // 
+            // TotalWHours
+            // 
+            this.TotalWHours.HeaderText = "Hours Worked";
+            this.TotalWHours.Name = "TotalWHours";
+            this.TotalWHours.ReadOnly = true;
+            // 
+            // TotalOTHours
+            // 
+            this.TotalOTHours.HeaderText = "OT Hours";
+            this.TotalOTHours.Name = "TotalOTHours";
+            this.TotalOTHours.ReadOnly = true;
+            // 
+            // Allowances
+            // 
+            this.Allowances.HeaderText = "Allowances";
+            this.Allowances.Name = "Allowances";
+            this.Allowances.ReadOnly = true;
+            // 
+            // Advances
+            // 
+            this.Advances.HeaderText = "Advances";
+            this.Advances.Name = "Advances";
+            this.Advances.ReadOnly = true;
+            // 
+            // Bonuses
+            // 
+            this.Bonuses.HeaderText = "Bonuses";
+            this.Bonuses.Name = "Bonuses";
+            this.Bonuses.ReadOnly = true;
+            // 
+            // Arrears
+            // 
+            this.Arrears.HeaderText = "Arrears";
+            this.Arrears.Name = "Arrears";
+            this.Arrears.ReadOnly = true;
+            // 
+            // GrossSalary
+            // 
+            this.GrossSalary.HeaderText = "Gross Salary";
+            this.GrossSalary.Name = "GrossSalary";
+            this.GrossSalary.ReadOnly = true;
+            // 
+            // OTPay
+            // 
+            this.OTPay.HeaderText = "OT Pay";
+            this.OTPay.Name = "OTPay";
+            this.OTPay.ReadOnly = true;
+            // 
+            // EPF
+            // 
+            this.EPF.HeaderText = "EPF";
+            this.EPF.Name = "EPF";
+            this.EPF.ReadOnly = true;
+            // 
+            // ETF
+            // 
+            this.ETF.HeaderText = "ETF";
+            this.ETF.Name = "ETF";
+            this.ETF.ReadOnly = true;
+            // 
+            // NetSalary
+            // 
+            this.NetSalary.HeaderText = "Net Salary";
+            this.NetSalary.Name = "NetSalary";
+            this.NetSalary.ReadOnly = true;
             // 
             // btnSearch
             // 
@@ -113,96 +222,6 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // PayslipID
-            // 
-            this.PayslipID.HeaderText = "Payslip ID";
-            this.PayslipID.Name = "PayslipID";
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "Employee ID";
-            this.ID.Name = "ID";
-            // 
-            // EmployeeName
-            // 
-            this.EmployeeName.HeaderText = "Employee Name";
-            this.EmployeeName.Name = "EmployeeName";
-            // 
-            // Designation
-            // 
-            this.Designation.HeaderText = "Designation";
-            this.Designation.Name = "Designation";
-            // 
-            // Department
-            // 
-            this.Department.HeaderText = "Department";
-            this.Department.Name = "Department";
-            // 
-            // Date_of_calculation
-            // 
-            this.Date_of_calculation.HeaderText = "Date of calculation";
-            this.Date_of_calculation.Name = "Date_of_calculation";
-            // 
-            // BasicSalary
-            // 
-            this.BasicSalary.HeaderText = "Basic Salary";
-            this.BasicSalary.Name = "BasicSalary";
-            // 
-            // TotalWHours
-            // 
-            this.TotalWHours.HeaderText = "Hours Worked";
-            this.TotalWHours.Name = "TotalWHours";
-            // 
-            // TotalOTHours
-            // 
-            this.TotalOTHours.HeaderText = "OT Hours";
-            this.TotalOTHours.Name = "TotalOTHours";
-            // 
-            // Allowances
-            // 
-            this.Allowances.HeaderText = "Allowances";
-            this.Allowances.Name = "Allowances";
-            // 
-            // Advances
-            // 
-            this.Advances.HeaderText = "Advances";
-            this.Advances.Name = "Advances";
-            // 
-            // Bonuses
-            // 
-            this.Bonuses.HeaderText = "Bonuses";
-            this.Bonuses.Name = "Bonuses";
-            // 
-            // Arrears
-            // 
-            this.Arrears.HeaderText = "Arrears";
-            this.Arrears.Name = "Arrears";
-            // 
-            // GrossSalary
-            // 
-            this.GrossSalary.HeaderText = "Gross Salary";
-            this.GrossSalary.Name = "GrossSalary";
-            // 
-            // OTPay
-            // 
-            this.OTPay.HeaderText = "OT Pay";
-            this.OTPay.Name = "OTPay";
-            // 
-            // EPF
-            // 
-            this.EPF.HeaderText = "EPF";
-            this.EPF.Name = "EPF";
-            // 
-            // ETF
-            // 
-            this.ETF.HeaderText = "ETF";
-            this.ETF.Name = "ETF";
-            // 
-            // NetSalary
-            // 
-            this.NetSalary.HeaderText = "Net Salary";
-            this.NetSalary.Name = "NetSalary";
             // 
             // btnViewPayslip
             // 
@@ -225,6 +244,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "ViewPayrollInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewPayrollInfo";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

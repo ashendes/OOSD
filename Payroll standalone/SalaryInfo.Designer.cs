@@ -84,7 +84,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 39);
+            this.label1.Location = new System.Drawing.Point(58, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(634, 108);
@@ -122,7 +122,7 @@
             this.groupBox1.Controls.Add(this.tbxEmpName);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(74, 231);
+            this.groupBox1.Location = new System.Drawing.Point(76, 255);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(576, 411);
             this.groupBox1.TabIndex = 7;
@@ -138,6 +138,9 @@
             this.cbxEmpID.Size = new System.Drawing.Size(498, 41);
             this.cbxEmpID.TabIndex = 9;
             this.cbxEmpID.SelectedIndexChanged += new System.EventHandler(this.cbxEmpID_SelectedIndexChanged);
+            this.cbxEmpID.TextChanged += new System.EventHandler(this.cbxEmpID_TextChanged);
+            this.cbxEmpID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxEmpID_KeyPress_1);
+            this.cbxEmpID.Leave += new System.EventHandler(this.cbxEmpID_Leave);
             // 
             // tbxDesignation
             // 
@@ -145,6 +148,7 @@
             this.tbxDesignation.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tbxDesignation.Location = new System.Drawing.Point(36, 345);
             this.tbxDesignation.Name = "tbxDesignation";
+            this.tbxDesignation.ReadOnly = true;
             this.tbxDesignation.Size = new System.Drawing.Size(499, 40);
             this.tbxDesignation.TabIndex = 8;
             // 
@@ -164,6 +168,7 @@
             this.tbxDept.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tbxDept.Location = new System.Drawing.Point(36, 258);
             this.tbxDept.Name = "tbxDept";
+            this.tbxDept.ReadOnly = true;
             this.tbxDept.Size = new System.Drawing.Size(499, 40);
             this.tbxDept.TabIndex = 6;
             // 
@@ -183,6 +188,7 @@
             this.tbxEmpName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tbxEmpName.Location = new System.Drawing.Point(36, 171);
             this.tbxEmpName.Name = "tbxEmpName";
+            this.tbxEmpName.ReadOnly = true;
             this.tbxEmpName.Size = new System.Drawing.Size(499, 40);
             this.tbxEmpName.TabIndex = 4;
             // 
@@ -193,7 +199,7 @@
             this.groupBox2.Controls.Add(this.year);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Location = new System.Drawing.Point(74, 662);
+            this.groupBox2.Location = new System.Drawing.Point(76, 686);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(576, 239);
             this.groupBox2.TabIndex = 8;
@@ -272,9 +278,9 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.tbxWHours);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(719, 231);
+            this.groupBox3.Location = new System.Drawing.Point(721, 255);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(946, 805);
+            this.groupBox3.Size = new System.Drawing.Size(946, 804);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Salary Details";
@@ -288,6 +294,7 @@
             this.tbxArrears.Name = "tbxArrears";
             this.tbxArrears.Size = new System.Drawing.Size(421, 40);
             this.tbxArrears.TabIndex = 41;
+            this.tbxArrears.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxArrears_KeyPress);
             // 
             // label20
             // 
@@ -442,6 +449,7 @@
             this.tbxBonuses.Name = "tbxBonuses";
             this.tbxBonuses.Size = new System.Drawing.Size(432, 40);
             this.tbxBonuses.TabIndex = 23;
+            this.tbxBonuses.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxBonuses_KeyPress);
             // 
             // label14
             // 
@@ -461,6 +469,7 @@
             this.tbxAdvances.Name = "tbxAdvances";
             this.tbxAdvances.Size = new System.Drawing.Size(432, 40);
             this.tbxAdvances.TabIndex = 21;
+            this.tbxAdvances.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAdvances_KeyPress);
             // 
             // label13
             // 
@@ -480,6 +489,7 @@
             this.tbxAllowances.Name = "tbxAllowances";
             this.tbxAllowances.Size = new System.Drawing.Size(432, 40);
             this.tbxAllowances.TabIndex = 19;
+            this.tbxAllowances.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAllowances_KeyPress);
             // 
             // label7
             // 
@@ -499,6 +509,8 @@
             this.tbxBasicSal.Name = "tbxBasicSal";
             this.tbxBasicSal.Size = new System.Drawing.Size(432, 40);
             this.tbxBasicSal.TabIndex = 17;
+            this.tbxBasicSal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxBasicSal_KeyPress);
+            this.tbxBasicSal.Leave += new System.EventHandler(this.tbxBasicSal_Leave);
             // 
             // label6
             // 
@@ -539,6 +551,8 @@
             this.tbxOTHours.Name = "tbxOTHours";
             this.tbxOTHours.Size = new System.Drawing.Size(432, 40);
             this.tbxOTHours.TabIndex = 13;
+            this.tbxOTHours.TextChanged += new System.EventHandler(this.tbxOTHours_TextChanged);
+            this.tbxOTHours.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxOTHours_KeyPress);
             // 
             // label4
             // 
@@ -558,6 +572,7 @@
             this.tbxWHours.Name = "tbxWHours";
             this.tbxWHours.Size = new System.Drawing.Size(432, 40);
             this.tbxWHours.TabIndex = 11;
+            this.tbxWHours.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxWHours_KeyPress);
             // 
             // label12
             // 
@@ -571,7 +586,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(382, 931);
+            this.btnReset.Location = new System.Drawing.Point(384, 955);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(268, 67);
             this.btnReset.TabIndex = 27;
@@ -581,7 +596,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(63, 931);
+            this.btnClose.Location = new System.Drawing.Point(65, 955);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(272, 67);
             this.btnClose.TabIndex = 28;
@@ -606,6 +621,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SalaryInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SalaryInfo";
             this.Load += new System.EventHandler(this.SalaryInfo_Load);
             this.groupBox1.ResumeLayout(false);

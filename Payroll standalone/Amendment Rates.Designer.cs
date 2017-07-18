@@ -34,14 +34,16 @@
             this.tbxETFRate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbxOTRate = new System.Windows.Forms.TextBox();
-            this.btnConfirm = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnConfirmEPF = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnConfirmETF = new System.Windows.Forms.Button();
+            this.btnConfirmOT = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(97, 66);
+            this.label1.Location = new System.Drawing.Point(75, 49);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 33);
@@ -50,17 +52,18 @@
             // 
             // tbxEPFRate
             // 
-            this.tbxEPFRate.Location = new System.Drawing.Point(279, 66);
+            this.tbxEPFRate.Location = new System.Drawing.Point(257, 49);
             this.tbxEPFRate.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tbxEPFRate.MaxLength = 10;
             this.tbxEPFRate.Name = "tbxEPFRate";
             this.tbxEPFRate.Size = new System.Drawing.Size(492, 40);
             this.tbxEPFRate.TabIndex = 14;
+            this.tbxEPFRate.TextChanged += new System.EventHandler(this.tbxEPFRate_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(97, 152);
+            this.label2.Location = new System.Drawing.Point(75, 135);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 33);
@@ -69,17 +72,18 @@
             // 
             // tbxETFRate
             // 
-            this.tbxETFRate.Location = new System.Drawing.Point(279, 152);
+            this.tbxETFRate.Location = new System.Drawing.Point(257, 135);
             this.tbxETFRate.Margin = new System.Windows.Forms.Padding(4);
             this.tbxETFRate.MaxLength = 10;
             this.tbxETFRate.Name = "tbxETFRate";
             this.tbxETFRate.Size = new System.Drawing.Size(492, 40);
             this.tbxETFRate.TabIndex = 16;
+            this.tbxETFRate.TextChanged += new System.EventHandler(this.tbxETFRate_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(97, 237);
+            this.label3.Location = new System.Drawing.Point(75, 220);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 33);
@@ -88,40 +92,66 @@
             // 
             // tbxOTRate
             // 
-            this.tbxOTRate.Location = new System.Drawing.Point(279, 237);
+            this.tbxOTRate.Location = new System.Drawing.Point(257, 220);
             this.tbxOTRate.Margin = new System.Windows.Forms.Padding(4);
             this.tbxOTRate.MaxLength = 10;
             this.tbxOTRate.Name = "tbxOTRate";
             this.tbxOTRate.Size = new System.Drawing.Size(492, 40);
             this.tbxOTRate.TabIndex = 18;
+            this.tbxOTRate.TextChanged += new System.EventHandler(this.tbxOTRate_TextChanged);
             // 
-            // btnConfirm
+            // btnConfirmEPF
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(103, 350);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(279, 50);
-            this.btnConfirm.TabIndex = 20;
-            this.btnConfirm.Text = "Confirm";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            this.btnConfirmEPF.Enabled = false;
+            this.btnConfirmEPF.Location = new System.Drawing.Point(758, 49);
+            this.btnConfirmEPF.Name = "btnConfirmEPF";
+            this.btnConfirmEPF.Size = new System.Drawing.Size(152, 52);
+            this.btnConfirmEPF.TabIndex = 20;
+            this.btnConfirmEPF.Text = "Confirm";
+            this.btnConfirmEPF.UseVisualStyleBackColor = true;
+            this.btnConfirmEPF.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // btnCancel
+            // btnClose
             // 
-            this.btnCancel.Location = new System.Drawing.Point(492, 350);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(279, 50);
-            this.btnCancel.TabIndex = 21;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnClose.Location = new System.Drawing.Point(631, 328);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(279, 50);
+            this.btnClose.TabIndex = 21;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnConfirmETF
+            // 
+            this.btnConfirmETF.Enabled = false;
+            this.btnConfirmETF.Location = new System.Drawing.Point(758, 135);
+            this.btnConfirmETF.Name = "btnConfirmETF";
+            this.btnConfirmETF.Size = new System.Drawing.Size(152, 52);
+            this.btnConfirmETF.TabIndex = 22;
+            this.btnConfirmETF.Text = "Confirm";
+            this.btnConfirmETF.UseVisualStyleBackColor = true;
+            this.btnConfirmETF.Click += new System.EventHandler(this.btnConfirmETF_Click);
+            // 
+            // btnConfirmOT
+            // 
+            this.btnConfirmOT.Enabled = false;
+            this.btnConfirmOT.Location = new System.Drawing.Point(758, 220);
+            this.btnConfirmOT.Name = "btnConfirmOT";
+            this.btnConfirmOT.Size = new System.Drawing.Size(152, 52);
+            this.btnConfirmOT.TabIndex = 23;
+            this.btnConfirmOT.Text = "Confirm";
+            this.btnConfirmOT.UseVisualStyleBackColor = true;
+            this.btnConfirmOT.Click += new System.EventHandler(this.btnConfirmOT_Click);
             // 
             // Amendment_Rates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(870, 463);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnConfirm);
+            this.ClientSize = new System.Drawing.Size(962, 420);
+            this.Controls.Add(this.btnConfirmOT);
+            this.Controls.Add(this.btnConfirmETF);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnConfirmEPF);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbxOTRate);
             this.Controls.Add(this.label2);
@@ -131,6 +161,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Amendment_Rates";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Amendment_Rates";
             this.Load += new System.EventHandler(this.Amendment_Rates_Load);
             this.ResumeLayout(false);
@@ -146,7 +177,9 @@
         private System.Windows.Forms.TextBox tbxETFRate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbxOTRate;
-        private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnConfirmEPF;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnConfirmETF;
+        private System.Windows.Forms.Button btnConfirmOT;
     }
 }

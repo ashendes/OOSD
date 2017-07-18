@@ -159,17 +159,7 @@ namespace MainUI
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DisposeAllButThis(this);
-                Hide();
-                Close();
-            }
-            finally
-            {
-                Login.getLoginForm().Show();
-            }
-
+            this.Close();
         }
         public void DisposeAllButThis(Form form)
         {
@@ -182,5 +172,27 @@ namespace MainUI
                 }                
             }
         }
+
+        private void MainSwitchboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Do you want to logout?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
+                {
+                    DisposeAllButThis(this);
+                    Hide();                    
+                }
+                finally
+                {
+                    Login.getLoginForm().Show();
+                }
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        
     }
 }

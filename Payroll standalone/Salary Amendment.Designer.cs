@@ -123,6 +123,7 @@
             this.tbxAmount.Name = "tbxAmount";
             this.tbxAmount.Size = new System.Drawing.Size(512, 40);
             this.tbxAmount.TabIndex = 12;
+            this.tbxAmount.Text = "0.00";
             this.tbxAmount.TextChanged += new System.EventHandler(this.tbxAmount_TextChanged);
             this.tbxAmount.Leave += new System.EventHandler(this.tbxAmount_Leave);
             // 
@@ -198,11 +199,13 @@
             this.lblSelect2.Size = new System.Drawing.Size(112, 33);
             this.lblSelect2.TabIndex = 19;
             this.lblSelect2.Text = "[Select]";
+            this.lblSelect2.Click += new System.EventHandler(this.lblSelect2_Click);
             // 
             // SalaryAmendmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1087, 661);
             this.Controls.Add(this.lblSelect2);
             this.Controls.Add(this.lblSelect);
@@ -221,6 +224,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SalaryAmendmentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Salary Amendment";
             this.Load += new System.EventHandler(this.SalaryAmendmentForm_Load);
             this.ResumeLayout(false);

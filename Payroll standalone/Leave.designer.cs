@@ -719,6 +719,7 @@
             this.Controls.Add(this.tabControlLeave);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Leave";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Leave";
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeave)).EndInit();

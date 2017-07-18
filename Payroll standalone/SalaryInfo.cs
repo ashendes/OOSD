@@ -32,6 +32,8 @@ namespace Payroll_standalone
             EPF_Rate = Convert.ToDouble(getRate("EPF"));
             ETF_Rate = Convert.ToDouble(getRate("ETF"));
             OT_Rate = Convert.ToDouble(getRate("OT"));
+            btnConfirm.Enabled = false;
+            btnViewPS.Enabled = false;
             lblEPF.Text = "EPF (" + EPF_Rate.ToString() + "%)";
             lblETF.Text = "ETF (" + ETF_Rate.ToString() + "%)";
             lblOT.Text = "OT Pay (" + OT_Rate.ToString() + "%)";
@@ -41,6 +43,7 @@ namespace Payroll_standalone
         {
             
             loadTocbxEmpID();
+            
             onLoad();
         }
 
@@ -138,36 +141,58 @@ namespace Payroll_standalone
 
         private void cbxEmpID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            searchIndex();
+        }
+        private void searchIndex()
+        {
+            if(cbxEmpID.Text != "")
             {
-                using (db)
+                try
                 {
-                    
-                    var query = "SELECT * FROM employeedatabase where ID= '" + cbxEmpID.Text + "'";
-                    using (var command = new MySqlCommand(query, db))
+                    using (db)
                     {
-                        db.Open();
-                        using (var reader = command.ExecuteReader())
+
+                        var query = "SELECT * FROM employeedatabase where ID= '" + cbxEmpID.Text + "'";
+                        using (var command = new MySqlCommand(query, db))
                         {
-                            reader.Read();
-                            tbxEmpName.Text = reader.GetString("First_Name") + " " + reader.GetString("Last_Name");
-                            tbxDept.Text = reader.GetString("Department");
-                            tbxDesignation.Text = reader.GetString("Designation");
-                            tbxBasicSal.Text = Convert.ToDouble(reader.GetString("Basic_Salary")).ToString("0.##");
-                            tbxArrears.Text = Convert.ToDouble(reader.GetString("Arrears")).ToString("0.##");
+                            db.Open();
+                            using (var reader = command.ExecuteReader())
+                            {
+                                reader.Read();
+                                tbxEmpName.Text = reader.GetString("First_Name") + " " + reader.GetString("Last_Name");
+                                tbxDept.Text = reader.GetString("Department");
+                                tbxDesignation.Text = reader.GetString("Designation");
+                                tbxBasicSal.Text = Convert.ToDouble(reader.GetString("Basic_Salary")).ToString("0.00");
+                                tbxArrears.Text = Convert.ToDouble(reader.GetString("Arrears")).ToString("0.00");
+                            }
+                            db.Close();
                         }
-                        db.Close();
+                        calculateTotalHours(cbxEmpID.Text, month, year);
+                        getAmendments(cbxEmpID.Text, month, year);
+                        formatTemp();
                     }
-                    calculateTotalHours(cbxEmpID.Text , month, year);
-                    getAmendments(cbxEmpID.Text, month, year);
+                }
+                catch (Exception ex)
+                {
+                    if(ex is MySqlException)
+                    {
+                        MessageBox.Show("No such employee in database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cbxEmpID.Text = "";
+                        reset();
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("No employee selected" , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
-
         private void calculateTotalHours(string EmpID, DateTimePicker month, DateTimePicker year)
         {
             double totalHoursWorked=0;
@@ -249,6 +274,11 @@ namespace Payroll_standalone
         private void btnReset_Click(object sender, EventArgs e)
         {
             onLoad();
+            reset();
+
+        }
+        private void reset()
+        {
             tbxBasicSal.ReadOnly = false;
             tbxWHours.ReadOnly = false;
             tbxOTHours.ReadOnly = false;
@@ -272,24 +302,35 @@ namespace Payroll_standalone
             tbxAllowances.Text = "";
             tbxAdvances.Text = "";
             tbxBonuses.Text = "";
-
+            btnConfirm.Enabled = false;
+            btnViewPS.Enabled = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            calculateSalary();
-            tbxBasicSal.ReadOnly=true;
-            tbxWHours.ReadOnly = true;
-            tbxOTHours.ReadOnly = true;
-            tbxAllowances.ReadOnly = true;
-            tbxAdvances.ReadOnly = true;
-            tbxBonuses.ReadOnly = true;
-            tbxArrears.ReadOnly = true;
+            try
+            {
+                calculateSalary();
+                tbxBasicSal.ReadOnly = true;
+                tbxWHours.ReadOnly = true;
+                tbxOTHours.ReadOnly = true;
+                tbxAllowances.ReadOnly = true;
+                tbxAdvances.ReadOnly = true;
+                tbxBonuses.ReadOnly = true;
+                tbxArrears.ReadOnly = true;
+                btnConfirm.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Select an employee", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
 
         }
 
@@ -302,12 +343,13 @@ namespace Payroll_standalone
             double ETF = Math.Round((GSal * (ETF_Rate / 100)),2, MidpointRounding.AwayFromZero);
             double NetSal = Math.Round((GSal + OTPay - EPF),2, MidpointRounding.AwayFromZero);
 
-            tbxGSal.Text = GSal.ToString("0.##");
-            tbxOTPay.Text = OTPay.ToString("0.##");
-            tbxEPF.Text = EPF.ToString("0.##");
-            tbxETF.Text = ETF.ToString("0.##");
-            tbxNetSal.Text = NetSal.ToString("0.##");
+            tbxGSal.Text = GSal.ToString();
+            tbxOTPay.Text = OTPay.ToString();
+            tbxEPF.Text = EPF.ToString();
+            tbxETF.Text = ETF.ToString();
+            tbxNetSal.Text = NetSal.ToString();
             currentRecord = new SalaryRecord(tbxPSID.Text, cbxEmpID.Text,tbxEmpName.Text, tbxDesignation.Text, tbxDept.Text, DateTime.Now.Date.ToString("yyyy-MM-dd"), month.Value.Month.ToString(), year.Text, tbxBasicSal.Text, tbxWHours.Text, tbxOTHours.Text, tbxAllowances.Text, tbxAdvances.Text, tbxAdvances.Text, tbxArrears.Text, tbxGSal.Text, tbxOTPay.Text, tbxEPF.Text, tbxETF.Text, tbxNetSal.Text);
+            formatCalc();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -346,18 +388,37 @@ namespace Payroll_standalone
                         db.Close();
                     }
 
-                    MessageBox.Show("Salary details added for " + cbxEmpID.Text + ": " + tbxEmpName, "" + month.Text + " " + year.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MessageBox.Show("Salary details added for " + cbxEmpID.Text + ": " + tbxEmpName.Text, "" + month.Text + " " + year.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnViewPS.Enabled = true;
                 }
 
 
-            }
-            catch (MySqlException ex)
+            } catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                if(ex is MySqlException)
+                {
+                    MessageBox.Show("Salary record of this month for current employee already exists.", "Already exists", MessageBoxButtons.OK , MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
         }
+        private void filterNonNumericInput(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
 
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
         private void btnViewPS_Click(object sender, EventArgs e)
         {
             var form = new PayslipViewer();
@@ -365,6 +426,97 @@ namespace Payroll_standalone
             form.Show();
         }
 
-       
+        private void tbxBasicSal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            filterNonNumericInput(sender, e);
+        }
+
+        private void tbxWHours_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            filterNonNumericInput(sender, e);
+        }
+
+        private void tbxOTHours_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            filterNonNumericInput(sender, e);
+        }
+
+        private void tbxAllowances_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            filterNonNumericInput(sender, e);
+        }
+
+        private void tbxAdvances_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            filterNonNumericInput(sender, e);
+        }
+
+        private void tbxBonuses_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            filterNonNumericInput(sender, e);
+        }
+
+        private void tbxArrears_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            filterNonNumericInput(sender, e);
+        }
+
+        
+
+        private void setFormat(TextBox tbx)
+        {
+            tbx.Text = string.Format("{0:#,0.00}", double.Parse(tbx.Text));
+            
+        }
+
+        private void tbxBasicSal_Leave(object sender, EventArgs e)
+        {
+            //setFormat(tbxBasicSal);
+        }
+
+        private void formatTemp()
+        {
+            tbxBasicSal.Text = string.Format("{0:#,0.00}", double.Parse(tbxBasicSal.Text));
+            tbxAllowances.Text = string.Format("{0:#,0.00}", double.Parse(tbxAllowances.Text));
+            tbxAdvances.Text = string.Format("{0:#,0.00}", double.Parse(tbxAdvances.Text));
+            tbxBonuses.Text = string.Format("{0:#,0.00}", double.Parse(tbxBonuses.Text));
+            tbxArrears.Text = string.Format("{0:#,0.00}", double.Parse(tbxArrears.Text));
+            tbxWHours.Text = string.Format("{0:#,0.#}", double.Parse(tbxWHours.Text));
+            tbxOTHours.Text = string.Format("{0:#,0.#}", double.Parse(tbxOTHours.Text));
+        }
+        private void formatCalc()
+        {
+            tbxGSal.Text = string.Format("{0:#,0.00}", double.Parse(tbxGSal.Text));
+            tbxOTPay.Text = string.Format("{0:#,0.00}", double.Parse(tbxOTPay.Text));
+            tbxEPF.Text = string.Format("{0:#,0.00}", double.Parse(tbxEPF.Text));
+            tbxETF.Text = string.Format("{0:#,0.00}", double.Parse(tbxETF.Text));
+            tbxNetSal.Text = string.Format("{0:#,0.00}", double.Parse(tbxNetSal.Text));
+            
+        }
+
+        private void tbxOTHours_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxEmpID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbxEmpID_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbxEmpID_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbxEmpID_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

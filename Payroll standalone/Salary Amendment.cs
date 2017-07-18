@@ -14,9 +14,9 @@ namespace Payroll_standalone
 {
     public partial class SalaryAmendmentForm : Form
     {
-        NumberFormatInfo nfi;
+        
         MySqlConnection db;
-        double amount;
+        
         int typeIndex;
         public SalaryAmendmentForm(MySqlConnection db)
         {
@@ -26,18 +26,12 @@ namespace Payroll_standalone
 
         private void tbxAmount_Leave(object sender, EventArgs e)
         {
-            amount = Convert.ToDouble(tbxAmount.Text);
-            float value;
-            if (float.TryParse(tbxAmount.Text, out value))
-                tbxAmount.Text = String.Format(nfi, "{0:C2}", value);
-            else
-                tbxAmount.Text = String.Empty;
+            tbxAmount.Text = string.Format("{0:#,0.00}", double.Parse(tbxAmount.Text));
         }
 
         private void SalaryAmendmentForm_Load(object sender, EventArgs e)
         {
-            nfi = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
-            nfi.CurrencySymbol = "Rs.";
+            
             loadTocbxEmpID();
             cbxEmpID.Focus();
         }
@@ -80,27 +74,32 @@ namespace Payroll_standalone
 
         private void cbxEmpID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblSelect2.Visible = false;
-            try
+            if (cbxEmpID.SelectedIndex != -1)
             {
-                using (db)
+                lblSelect2.Visible = false;
+                try
                 {
-                    db.Open();
-                    var query = "SELECT * FROM employeedatabase where ID= '" + cbxEmpID.Text + "'";
-                    using (var command = new MySqlCommand(query, db))
+                    using (db)
                     {
-                        using (var reader = command.ExecuteReader())
+                        db.Open();
+                        var query = "SELECT * FROM employeedatabase where ID= '" + cbxEmpID.Text + "'";
+                        using (var command = new MySqlCommand(query, db))
                         {
-                            reader.Read();
-                            tbxEmpName.Text = reader.GetString("First_name") + " " + reader.GetString("Last_name");
+                            using (var reader = command.ExecuteReader())
+                            {
+                                reader.Read();
+                                tbxEmpName.Text = reader.GetString("First_name") + " " + reader.GetString("Last_name");
+                            }
                         }
+                        db.Close();
                     }
-                    db.Close();
                 }
-            }catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+            
 
         }
 
@@ -147,7 +146,7 @@ namespace Payroll_standalone
                 using (db)
                 {
 
-                    var query = "INSERT into `salary amendments` (`Emp_ID`, `Date_of_amendment` , `Amount` , `Amendment_type`) VALUES (" + Convert.ToInt32(cbxEmpID.Text) + ",'" + dateTimePicker.Value.Date.ToString("yyyy-MM-dd") + "'," + amount + ","+ typeIndex+ ")";
+                    var query = "INSERT into `salary amendments` (`Emp_ID`, `Date_of_amendment` , `Amount` , `Amendment_type`) VALUES (" + Convert.ToInt32(cbxEmpID.Text) + ",'" + dateTimePicker.Value.Date.ToString("yyyy-MM-dd") + "'," + tbxAmount.Text + "," + typeIndex + ")";
                     using (var command = new MySqlCommand(query, db))
                     {
                         db.Open();
@@ -155,13 +154,22 @@ namespace Payroll_standalone
                         db.Close();
                     }
                     MessageBox.Show("Salary amendments added for Employee " + cbxEmpID.Text + ":" + tbxEmpName.Text, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    if (MessageBox.Show("Add another amendment?", "Salary Amendment", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        reset();
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            
         }
         private String convertCurrency(string input)
         {
@@ -182,6 +190,20 @@ namespace Payroll_standalone
         private void tbxAmount_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void lblSelect2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reset()
+        {
+            cbxEmpID.SelectedIndex = -1;
+            cbxAmendType.SelectedIndex = -1;
+            lblSelect.Visible = true;
+            tbxEmpName.Text = "";
+            tbxAmount.Text = "0.00";
         }
     }
 }

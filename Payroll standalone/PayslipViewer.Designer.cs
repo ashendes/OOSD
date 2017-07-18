@@ -52,6 +52,7 @@
             this.ClientSize = new System.Drawing.Size(1672, 1164);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "PayslipViewer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PayslipViewer";
             this.Load += new System.EventHandler(this.PayslipViewer_Load);
             this.ResumeLayout(false);
